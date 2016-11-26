@@ -1,0 +1,378 @@
+/* responsive */
+@media screen and (max-width:374px) {
+    // global forms  ///////////////////////////////////////////
+    span.input-text,
+    input.input-text,
+    select.select {
+        height: 30px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        font-size: 14px;
+        &-139 {
+            width: 118px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+        &-73 {
+            width: 68px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+        &-52 {
+            width: 44px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+        &-147 {
+            width: 134px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+    }
+    .select-value {
+        font-size: 14px;
+        line-height: 30px;
+    }
+    .select-wrapper {
+        &-139 {
+            width: 118px;
+        }
+        &-73 {
+            width: 68px;
+        }
+        &-52 {
+            width: 44px;
+        }
+    }
+    a.button,
+    input.button,
+    button.button {
+        width: 144px;
+        height: 30px;
+        font-size: 14px;
+        line-height: 28px;
+        &-max {
+            width: 236px;
+        }
+        &-144 {
+            width: 110px;
+        }
+        &-auto {
+            width: auto;
+        }
+    }
+    input.button,
+    button.button {
+        line-height: normal;
+    }
+    // element breadcrumbs ///////////////////////////////////////////
+    .breadcrumbs-list {
+        li {
+            .breadcrumbs-list-text {
+                font-size: 13px;
+            }
+        }
+    }
+    .breadcrumbs-block {
+        &-thin {
+            .breadcrumbs {
+                height: 31px;
+            }
+            .breadcrumbs-list {
+                li {
+                    .breadcrumbs-list-corner {
+                        line-height: 27px;
+                        height: 27px;
+                        &:before {
+                            margin-top: -11px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // screen signin ///////////////////////////////////////////
+    .signin-caption {
+        padding-bottom: 10px;
+    }
+    .signin-title {
+        font-size: 30px;
+        padding-bottom: 0;
+    }
+    .signin-note {
+        font-size: 18px;
+    }
+    .signin-illustration {
+        margin-bottom: 14px;
+    }
+    .signin-forgot-password {
+        padding-top: 14px;
+    }
+    .signin-form-nav {
+        margin-bottom: 18px;
+    }
+    .timer-wrapper-push {
+        height: 60px;
+    }
+    // screen signup ///////////////////////////////////////////
+    .signup-caption {
+        padding-top: 60px;
+    }
+    .signup-goback {
+        padding-top: 0;
+    }
+    .signup-title {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    //screen next link bank ///////////////////////////////////////////
+    .next-link-bank-caption {
+        padding-top: 160px;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .link-bank-nav {
+        a.button {
+            margin-left: 8px;
+            margin-right: 8px;
+            width: 124px;
+        }
+    }
+    //screen analyzing  ///////////////////////////////////////////
+    .timer-wrapper-push {
+        height: 0;
+    }
+    // element panel-bottom ///////////////////////////////////////////
+    .panel-bottom {
+        padding-top: 10px;
+    }
+    //screen income & edit ///////////////////////////////////////////
+    .income-row-mobile-separate {
+        display: block;
+        clear: both;
+        height: 10px;
+    }
+    .income-edit-navigation {
+        padding-top: 42px;
+    }
+    .income-edit-title {
+        padding-bottom: 60px;
+    }
+    .income-form,
+    .income-edit-form {
+        font-size: 14px;
+        line-height: 21px;
+        input.input-text,
+        select.select,
+        .select-wrapper,
+        span.input-text {
+            margin: 0 2px;
+        }
+    }
+    .income-row,
+    .income-edit-row {
+        margin-bottom: 8px;
+    }
+    .income-note {
+        font-size: 13px;
+        line-height: 19px;
+        padding-bottom: 16px;
+        // padding-bottom: 30px;
+        &-hide {
+            padding-bottom: 6px;
+        }
+    }
+    // element graphic ///////////////////////////////////////////
+    .graphic-group {
+        padding-top: 92px;
+        width: 86px;
+    }
+    .your-money-graphic {
+        width: 86px;
+        &-red {
+            margin-left: -44px;
+        }
+        &-green {
+            margin-left: -148px;
+        }
+        &-blue {
+            margin-left: 60px;
+        }
+        &.active {
+            margin-left: -148px;
+        }
+    }
+    .graphic-item {
+        margin-top: -47px;
+    }
+    .graphic-separator {
+        height: 30px;
+    }
+    .graphic.graphic-your-plan {
+        .graphic-item-index {
+            &-1,
+            &-2,
+            &-3,
+            &-4,
+            &-5,
+            &-6,
+            &-7,
+            &-8,
+            &-9,
+            &-10,
+            &-11,
+            &-12,
+            &-13,
+            &-14,
+            &-15,
+            &-16,
+            &-17,
+            &-18 {
+                @include transform(translate(0, -10px));
+            }
+            &-19,
+            &-20,
+            &-21 {
+                @include transform(translate(102px, 88px));
+            }
+            &-22,
+            &-23,
+            &-24,
+            &-25,
+            &-26,
+            &-27,
+            &-28,
+            &-29,
+            &-30,
+            &-31,
+            &-32,
+            &-33,
+            &-34,
+            &-35,
+            &-36,
+            &-37,
+            &-38,
+            &-39,
+            &-40,
+            &-41,
+            &-42,
+            &-43 {
+                @include transform(translate(-102px, 130px));
+            }
+        }
+    }
+    //screen bills ///////////////////////////////////////////
+    .bills-info {
+        margin-top: -4px;
+        font-size: 14px;
+        line-height: 19px;
+        padding-top: 0;
+        letter-spacing: 0;
+    }
+    .bills-legend {
+        padding: 0 0 3px;
+        font-size: 8px;
+        line-height: 12px;
+    }
+    .bills-row {
+        margin-bottom: 8px;
+    }
+    .bills-link {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 4px 0;
+    }
+    .bills-link-date {
+        padding-left: 8px;
+    }
+    .bills-link-info,
+    .bills-link-amount {
+        padding-right: 8px;
+    }
+    a.bills-add-button {
+        height: 21px;
+        line-height: 21px;
+        font-size: 8px;
+    }
+    .bills-total-title,
+    .bills-total-amount {
+        font-size: 14px;
+        line-height: 16px;
+    }
+    .bills-total-note {
+        font-size: 10px;
+        line-height: 14px;
+        padding: 0 0 20px;
+    }
+    a.bills-edit-delete {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+    .bills-edit-date {
+        select.select,
+        .select-wrapper {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+    }
+    //screen saving ///////////////////////////////////////////
+    .saving-info {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 14px;
+        line-height: 28px;
+        letter-spacing: 0;
+    }
+    //screen saving ///////////////////////////////////////////
+    .spending-info {
+        font-size: 14px;
+        line-height: 19px;
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+        letter-spacing: 0;
+    }
+    //element your money header ///////////////////////////////
+    .your-money-column {
+        width: 86px;
+        &-red {
+            margin-left: -44px;
+        }
+        &-green {
+            margin-left: -148px;
+        }
+        &-blue {
+            margin-left: 60px;
+        }
+    }
+    .your-money-link-title {
+        font-size: 14px;
+    }
+    //screen your plan /////////////////////////////////////////
+    .your-plan-info {
+        font-size: 14px;
+        line-height: 19px;
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+        letter-spacing: 0;
+    }
+    .your-plan-columns-wrapper {
+        max-width: 290px;
+    }
+    .your-plan-graphic {
+        width: 86px;
+    }
+    .your-plan-graphic-cell {
+        height: 190px;
+    }
+    .your-plan-link-total,
+    .your-plan-link-title {
+        font-size: 14px;
+        line-height: 19px;
+    }
+    .graphic-item-description {
+        font-size: 14px;
+        left: 90px;
+    }
+}

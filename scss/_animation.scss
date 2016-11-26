@@ -1,0 +1,22 @@
+@include keyframes(rotateLoaderSecond) {
+    0% {
+        @include transform(rotate(-45deg));
+    }
+    25%, 50% {
+        @include transform(rotate(135deg));
+    }
+    75%, 100% {
+        @include transform(rotate(315deg));
+    }
+}
+@include keyframes(rotateLoaderFirst) {
+    0% {
+        @include transform(rotate(135deg));
+    }
+    25%, 50% {
+        @include transform(rotate(315deg));
+    }
+    75%, 100% {
+        @include transform(rotate(495deg));
+    }
+}

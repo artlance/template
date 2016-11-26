@@ -1,0 +1,1502 @@
+/* content */
+// element breadcrumbs ///////////////////////////////////////////
+.breadcrumbs-block {
+    background: $bg;
+    position: absolute;
+    padding: 34px 0 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    &-thin {
+        padding-top: 0;
+        .breadcrumbs {
+            height: 37px;
+        }
+        .breadcrumbs-list {
+            overflow: hidden;
+            li {
+                .breadcrumbs-list-corner {
+                    line-height: 33px;
+                    height: 33px;
+                    &:before {
+                        margin-top: -8px;
+                    }
+                }
+            }
+        }
+    }
+}
+.breadcrumbs {
+    height: 52px;
+    overflow: hidden;
+}
+.breadcrumbs-push {
+    height: 86px;
+    &-thin {
+        height: 86px;
+    }
+}
+.breadcrumbs-list {
+    display: table;
+    width: 100%;
+    border-top: 2px solid $w;
+    border-bottom: 2px solid $w;
+    li {
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        .breadcrumbs-list-text {
+            position: relative;
+            z-index: 10;
+            font-size: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 0 12px 0 6px;
+        }
+        .breadcrumbs-list-corner {
+            display: block;
+            height: 48px;
+            line-height: 48px;
+            position: relative;
+            &:before {
+                z-index: 5;
+                content: "";
+                position: absolute;
+                top: -2px;
+                right: -5px;
+                width: 22px;
+                height: 52px;
+                background: transparent url('../upload/breadcrumbs@2x.png') 50% 0 no-repeat;
+                @include bgsize(21px 260px);
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: $tr;
+                width: 16px;
+                top: 0;
+                bottom: 0;
+            }
+        }
+        &.active {
+            .breadcrumbs-list-corner {
+                background-color: $w;
+                color: $bg;
+                &:before {
+                    background-position: 0 -52px;
+                }
+            }
+        }
+        &.active-red {
+            .breadcrumbs-list-corner {
+                background-color: $red;
+                //color: $w;
+                &:before {
+                    background-position: 0 -104px;
+                }
+            }
+        }
+        &.active-next-red {
+            .breadcrumbs-list-corner {
+                &:after {
+                    background-color: $red;
+                }
+                &:before {
+                    background-position: 0 -156px;
+                }
+            }
+        }
+        &.active-blue {
+            .breadcrumbs-list-corner {
+                background-color: $blue;
+                //color: $w;
+                &:before {
+                    background-position: 0 -208px;
+                }
+            }
+        }
+        &.active-next-blue {
+            .breadcrumbs-list-corner {
+                &:after {
+                    background-color: $blue;
+                }
+            }
+        }
+        &.active-green {
+            .breadcrumbs-list-corner {
+                background-color: $green;
+                &:before,
+                &:after {
+                    display: none;
+                }
+            }
+        }
+        &.active-next-green {
+            .breadcrumbs-list-corner {
+                &:after {
+                    background-color: $green;
+                }
+            }
+        }
+        &.active-last {
+            .breadcrumbs-list-corner {
+                &:after {
+                    background-color: $bg;
+                }
+            }
+        }
+        &.last-child {
+            .breadcrumbs-list-corner:before {
+                display: none;
+            }
+            .breadcrumbs-list-text {
+                padding-right: 6px;
+            }
+        }
+    }
+}
+// screen signin ///////////////////////////////////////////
+.screen-signin {
+}
+.signin-caption {
+    text-align: center;
+    padding: 18px 0 15px;
+}
+.signin-title {
+    font-size: 36px;
+    line-height: 1.35;
+    color: $green;
+    font-weight: 500;
+    padding-bottom: 4px;
+}
+.signin-note {
+    font-size: 20px;
+    line-height: 1.35;
+    color: $white;
+    font-weight: 500;
+}
+.signin-illustration {
+    width: 101px;
+    height: 107px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 47px;
+    margin-bottom: 16px;
+}
+.signin-img {
+    margin-top: -46px;
+    position: relative;
+    &-index-1 { z-index: 1; }
+    &-index-2 { z-index: 2; }
+    &-index-3 { z-index: 3; }
+    &-index-4 { z-index: 4; }
+    &-index-5 { z-index: 5; }
+    &-index-6 { z-index: 6; }
+    &-index-7 { z-index: 7; }
+    &-index-8 { z-index: 8; }
+    &-index-9 { z-index: 9; }
+    &-index-10 { z-index: 10; }
+    &-index-11 { z-index: 11; }
+    &-index-12 { z-index: 12; }
+    svg {
+        display: block;
+    }
+}
+.signin-form {
+}
+.signin-form-error {
+    margin: -2px 0 8px;
+    color: $yellow;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 14px;
+    min-height: 14px;
+    letter-spacing: 0.2px;
+}
+.signin-form-row {
+    @extend .clearfix;
+    width: 160px;
+    margin: 0 auto;
+}
+.signin-form-cell {
+    @extend .clearfix;
+    margin-bottom: 10px;
+}
+.signin-form-nav {
+    text-align: center;
+    vertical-align: top;
+    margin-bottom: 20px;
+}
+.signin-forgot-password {
+    padding-top: 6px;
+    margin-bottom: 22px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    a {
+        //text-decoration: underline;
+    }
+}
+.create-account {
+    text-align: center;
+    padding-bottom: 18px;
+}
+.create-account-line {
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border-bottom: 1px solid $white;
+    margin-bottom: 22px;
+}
+.create-account-title {
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 0.2px;
+    margin-bottom: 11px;
+}
+.create-account-nav {
+    text-align: center;
+    vertical-align: top;
+    padding-bottom: 20px;
+}
+// screen get started ///////////////////////////////////////////
+.screen-get-started {
+}
+.signup-caption {
+    padding-top: 88px;
+    text-align: center;
+}
+.signup-note {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    margin-bottom: 14px;
+    font-weight: normal;
+    a {
+        text-decoration: underline;
+    }
+}
+.signup-bottom {
+    text-align: center;
+    padding-bottom: 32px;
+}
+.signup-title {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+    margin-bottom: 11px;
+}
+.signup-form-error {
+    margin: -2px 0 6px;
+    color: $yellow;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 14px;
+    min-height: 14px;
+    letter-spacing: 0.2px;
+}
+.signup-form-row {
+    @extend .clearfix;
+    width: 160px;
+    margin: 0 auto;
+}
+.signup-form-cell {
+    @extend .clearfix;
+    margin-bottom: 10px;
+}
+.signup-form-nav {
+    text-align: center;
+    vertical-align: top;
+    margin-bottom: 18px;
+}
+.signup-goback {
+    padding-top: 46px;
+    text-align: center;
+    padding-bottom: 18px;
+}
+//screen privacy and terms ///////////////////////////////////////////
+.screen-privacy,
+.screen-terms {
+    z-index: 8080;
+    background: $w;
+    color: $bg;
+    a {
+        color: $blue;
+        text-decoration: underline;
+    }
+}
+.text-block {
+    padding: 24px 0;
+}
+a.back {
+    top: 24px;
+    left: 20px;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    .svg {
+        width: 12px;
+    }
+}
+//screen link bank ///////////////////////////////////////////
+.link-bank-caption {
+    padding: 200px 15px 60px;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+.link-bank-nav {
+    text-align: center;
+    margin-bottom: 40px;
+}
+//screen next link bank ///////////////////////////////////////////
+.next-link-bank-caption {
+    padding: 200px 15px 13px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    p {
+        margin-bottom: 23px;
+    }
+}
+.link-bank-nav {
+    font-size: 0;
+    margin: 0 -11px 40px;
+    a.button {
+        margin: 0 11px 17px;
+        white-space: nowrap;
+    }
+}
+//screen analyzing  ///////////////////////////////////////////
+.loader-wrapper {
+    width: 100%;
+    position: relative;
+    position: absolute;
+}
+.loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.loader-first {
+    position: absolute;
+    width: 49.999%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.pie-first {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    border: 2px solid $tr;
+    border-left-color: $yellow;
+    border-top-color: $yellow;
+    @include border-radius(50%);
+    @include transform(rotate(135deg));
+    z-index: 10;
+    @include animation-name(rotateLoaderFirst);
+    @include animation-duration(4s);
+    @include animation-timing-function(linear);
+    @include animation-iteration-count(infinite);
+    @include animation-delay(1s);
+}
+.loader-second {
+    position: absolute;
+    width: 50.111%;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.pie-second {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    @include border-radius(50%);
+    border: 2px solid $tr;
+    border-left-color: $yellow;;
+    border-top-color: $yellow;;
+    @include transform(rotate(-45deg));
+    z-index: 10;
+    @include animation-name(rotateLoaderSecond);
+    @include animation-duration(4s);
+    @include animation-timing-function(linear);
+    @include animation-iteration-count(infinite);
+    @include animation-delay(0);
+}
+.timer-wrapper {
+    position: relative;
+    padding: 30px;
+    margin: 0 auto 9px;
+}
+.timer-text-table {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.timer-text-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+.timer-text {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 22px 35px 0;
+    letter-spacing: 0.2px;
+    p {
+        margin-bottom: 22px;
+    }
+}
+.timer-text-ready {
+    display: none;
+}
+.timer-wrapper-push {
+    height: 30px;
+}
+.analyzing-navigation {
+    margin: 0 -11px;
+    min-height: 100px;
+    text-align: center;
+    padding: 0 20px;
+    a.button {
+        margin-left: 11px;
+        margin-right: 11px;
+        margin-bottom: 17px;
+    }
+}
+.analyzing-secured {
+    text-align: center;
+    color: $yellow;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: normal;
+    letter-spacing: 0.2px;
+    margin-top: -6px;
+    padding: 0px 20px 20px;
+}
+a.hide-analyzing,
+a.button-analyzing-ready,
+a.button-analyzing-ready-back {
+    display: none;
+}
+.screen-analyzing-no-card {
+    a.hide-analyzing {
+        display: inline-block;
+    }
+}
+.screen-analyzing-ready {
+    a.button-analyzing-ready-back,
+    a.button-analyzing-ready {
+        display: inline-block;
+    }
+}
+// element graphic ///////////////////////////////////////////
+.graphic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+}
+.graphic-group {
+    //position: relative;
+    padding-top: 102px;
+    margin: 0 auto 24px;
+    width: 100px;
+}
+.graphic-item {
+    margin-top: -46px;
+    position: relative;
+    @include transition(transform 0.3s ease-in-out);
+    svg {
+        display: block;
+        width: 100%;
+    }
+    &-index-1 { z-index: 1; }
+    &-index-2 { z-index: 2; }
+    &-index-3 { z-index: 3; }
+    &-index-4 { z-index: 4; }
+    &-index-5 { z-index: 5; }
+    &-index-6 { z-index: 6; }
+    &-index-7 { z-index: 7; }
+    &-index-8 { z-index: 8; }
+    &-index-9 { z-index: 9; }
+    &-index-10 { z-index: 10; }
+
+    &-index-11 { z-index: 11; }
+    &-index-12 { z-index: 12; }
+    &-index-13 { z-index: 13; }
+    &-index-14 { z-index: 14; }
+    &-index-15 { z-index: 15; }
+    &-index-16 { z-index: 16; }
+    &-index-17 { z-index: 17; }
+    &-index-18 { z-index: 18; }
+    &-index-19 { z-index: 19; }
+    &-index-20 { z-index: 20; }
+
+    &-index-21 { z-index: 21; }
+    &-index-22 { z-index: 22; }
+    &-index-23 { z-index: 23; }
+    &-index-24 { z-index: 24; }
+    &-index-25 { z-index: 25; }
+    &-index-26 { z-index: 26; }
+    &-index-27 { z-index: 27; }
+    &-index-28 { z-index: 28; }
+    &-index-29 { z-index: 29; }
+    &-index-30 { z-index: 30; }
+
+    &-index-31 { z-index: 31; }
+    &-index-32 { z-index: 32; }
+    &-index-33 { z-index: 33; }
+    &-index-34 { z-index: 34; }
+    &-index-35 { z-index: 35; }
+    &-index-36 { z-index: 36; }
+    &-index-37 { z-index: 37; }
+    &-index-38 { z-index: 38; }
+    &-index-39 { z-index: 39; }
+    &-index-40 { z-index: 40; }
+
+    &-index-41 { z-index: 41; }
+    &-index-42 { z-index: 42; }
+    &-index-43 { z-index: 43; }
+    &-index-44 { z-index: 44; }
+    &-index-45 { z-index: 45; }
+    &-index-46 { z-index: 46; }
+    &-index-47 { z-index: 47; }
+    &-index-48 { z-index: 48; }
+    &-index-49 { z-index: 49; }
+    &-index-50 { z-index: 50; }
+
+    &-index-51 { z-index: 51; }
+    &-index-52 { z-index: 52; }
+    &-index-53 { z-index: 53; }
+    &-index-54 { z-index: 54; }
+    &-index-55 { z-index: 55; }
+    &-index-56 { z-index: 56; }
+    &-index-57 { z-index: 57; }
+    &-index-58 { z-index: 58; }
+    &-index-59 { z-index: 59; }
+    &-index-60 { z-index: 60; }
+
+    &-index-61 { z-index: 61; }
+    &-index-62 { z-index: 62; }
+    &-index-63 { z-index: 63; }
+    &-index-64 { z-index: 64; }
+    &-index-65 { z-index: 65; }
+    &-index-66 { z-index: 66; }
+    &-index-67 { z-index: 67; }
+    &-index-68 { z-index: 68; }
+    &-index-69 { z-index: 69; }
+    &-index-70 { z-index: 70; }
+
+    &-index-71 { z-index: 71; }
+    &-index-72 { z-index: 72; }
+    &-index-73 { z-index: 73; }
+    &-index-74 { z-index: 74; }
+    &-index-75 { z-index: 75; }
+    &-index-76 { z-index: 76; }
+    &-index-77 { z-index: 77; }
+    &-index-78 { z-index: 78; }
+    &-index-79 { z-index: 79; }
+    &-index-80 { z-index: 80; }
+
+    &-index-81 { z-index: 81; }
+    &-index-82 { z-index: 82; }
+    &-index-83 { z-index: 83; }
+    &-index-84 { z-index: 84; }
+    &-index-85 { z-index: 85; }
+    &-index-86 { z-index: 86; }
+    &-index-87 { z-index: 87; }
+    &-index-88 { z-index: 88; }
+    &-index-89 { z-index: 89; }
+    &-index-90 { z-index: 90; }
+
+    &-index-91 { z-index: 91; }
+    &-index-92 { z-index: 92; }
+    &-index-93 { z-index: 93; }
+    &-index-94 { z-index: 94; }
+    &-index-95 { z-index: 95; }
+    &-index-96 { z-index: 96; }
+    &-index-97 { z-index: 97; }
+    &-index-98 { z-index: 98; }
+    &-index-99 { z-index: 99; }
+    &-index-100 { z-index: 100; }
+
+    &-index-101 { z-index: 101; }
+    &-index-102 { z-index: 102; }
+    &-index-103 { z-index: 103; }
+    &-index-104 { z-index: 104; }
+    &-index-105 { z-index: 105; }
+    &-index-106 { z-index: 106; }
+    &-index-107 { z-index: 107; }
+    &-index-108 { z-index: 108; }
+    &-index-109 { z-index: 109; }
+    &-index-110 { z-index: 110; }
+
+    &-index-111 { z-index: 111; }
+    &-index-112 { z-index: 112; }
+    &-index-113 { z-index: 113; }
+    &-index-114 { z-index: 114; }
+    &-index-115 { z-index: 115; }
+    &-index-116 { z-index: 116; }
+    &-index-117 { z-index: 117; }
+    &-index-118 { z-index: 118; }
+    &-index-119 { z-index: 119; }
+    &-index-120 { z-index: 120; }
+}
+.graphic-push {
+    height: 340px;
+}
+.graphic-separator {
+    clear: both;
+    display: none;
+    height: 43px;
+}
+.item-fill {
+    @include transition(fill 1s $f);
+}
+.graphic.graphic-your-plan {
+    .graphic-item-index {
+        &-1,
+        &-2,
+        &-3,
+        &-4,
+        &-5,
+        &-6,
+        &-7,
+        &-8,
+        &-9,
+        &-10,
+        &-11,
+        &-12,
+        &-13,
+        &-14,
+        &-15,
+        &-16,
+        &-17,
+        &-18 {
+            @include transform(translate(0, -38px));
+        }
+        &-19,
+        &-20,
+        &-21 {
+            @include transform(translate(122px, 90px));
+        }
+        &-22,
+        &-23,
+        &-24,
+        &-25,
+        &-26,
+        &-27,
+        &-28,
+        &-29,
+        &-30,
+        &-31,
+        &-32,
+        &-33,
+        &-34,
+        &-35,
+        &-36,
+        &-37,
+        &-38,
+        &-39,
+        &-40,
+        &-41,
+        &-42,
+        &-43 {
+            @include transform(translate(-122px, 148px));
+        }
+    }
+}
+// element panel-bottom ///////////////////////////////////////////
+.panel-bottom {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 7005;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 100%;
+    overflow: auto;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(41, 44, 51, 0.75);
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+}
+.panel-bottom-dragg {
+    display: block;
+    height: 29px;
+    position: relative;
+    cursor: row-resize;
+    margin-bottom: 6px;
+}
+.panel-dragg-icon {
+    position: absolute;
+    width: 28px;
+    height: 1px;
+    background: $gray;
+    top: 50%;
+    left: 50%;
+    margin-left: -14px;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: $gray;
+    }
+    &:after {
+        top: auto;
+        bottom: -4px;
+    }
+}
+//screen income & edit ///////////////////////////////////////////
+.income-form,
+.income-edit-form {
+    text-align: center;
+    margin-left: -4px;
+    margin-right: -4px;
+    input.input-text,
+    .select-wrapper,
+    span.input-text {
+        margin: 0 4px;
+    }
+}
+.income-row-line {
+    border-bottom: 1px solid $w;
+    height: 5px;
+    clear: both;
+    margin-bottom: 14px;
+}
+.income-row,
+.income-edit-row {
+    margin-bottom: 10px;
+}
+.income-2week-separate {
+    display: block;
+    clear: both;
+    height: 10px;
+    clear: both;
+}
+.income-navigation,
+.income-edit-navigation {
+    margin-left: -9px;
+    margin-right: -9px;
+    padding-bottom: 3px;
+    a.button {
+        margin: 0 9px 17px;
+    }
+}
+.income-edit-navigation {
+    padding-top: 70px;
+}
+.income-note {
+    padding-top: 6px;
+    letter-spacing: 0.2px;
+    padding-bottom: 26px;
+    p {
+        margin-bottom: 0;
+    }
+    &-hide {
+        padding-bottom: 4px;
+        p {
+            display: none;
+        }
+    }
+}
+.income-row-mobile-separate {
+    display: none;
+}
+.income-edit-title {
+    padding: 30px 0 24px;
+    text-align: center;
+}
+.screen-income-edit {
+    z-index: 8080;
+    .back {
+        top: 30px;
+    }
+}
+.income-edit-2week,
+.income-edit-week,
+.income-edit-month,
+.income-week,
+.income-month,
+.income-2week {
+    display: none;
+}
+//screen bills ///////////////////////////////////////////
+.bills-info {
+    text-align: center;
+    color: $red;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 7px 10px 15px;
+    letter-spacing: 0.2px;
+}
+.bills-line {
+    border-bottom: 1px solid #D9D9D9;
+}
+.bills-legend {
+    padding: 0 0 5px;
+    font-size: 10px;
+    line-height: 14px;
+    text-transform: uppercase;
+}
+.bills-legend-due {
+    float: left;
+    width: 18.5%;
+    padding-left: 11px;
+    white-space: nowrap;
+}
+.bills-legend-name {
+    float: left;
+    width: 51.5%;
+    padding-right: 10px;
+}
+.bills-legend-amount {
+    float: left;
+    width: 30%;
+    text-align: right;
+    padding-right: 12px;
+    white-space: nowrap;
+}
+.bills-list {
+}
+.bills-row {
+    margin-bottom: 10px;
+}
+.bills-link {
+    cursor: pointer;
+    display: block;
+    border: 1px solid $w;
+    color: $red;
+    padding: 5px 0;
+}
+.bills-link-date {
+    float: left;
+    width: 18.5%;
+    padding-left: 10px;
+    white-space: nowrap;
+}
+.bills-link-info {
+    float: left;
+    width: 51.5%;
+    padding-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.bills-link-amount {
+    float: left;
+    width: 30%;
+    text-align: right;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+.bills-total-note {
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 0.2px;
+    padding: 0 0 36px;
+}
+.bills-navigation,
+.bills-navigation-edit {
+    text-align: center;
+    margin-left: -9px;
+    margin-right: -9px;
+    padding-bottom: 3px;
+    a.button {
+        margin: 0 9px 17px;
+        color: $red;
+        &.disabled {
+            color: #9B9B9B !important;
+            cursor: default;
+        }
+    }
+}
+.bills-total {
+    padding: 1px 0 10px;
+}
+.bills-total-nav {
+    float: left;
+    width: 30%;
+    padding-left: 10px;
+}
+a.bills-add-button {
+    position: relative;
+    height: 24px;
+    line-height: 24px;
+    background: $w;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: $red;
+    display: inline-block;
+    padding: 0 17px;
+    @include border-radius(7px);
+    &:active {
+        bottom: -1px;
+    }
+}
+.bills-total-title {
+    font-size: 16px;
+    color: $red;
+    padding-top: 4px;
+    line-height: 20px;
+    float: left;
+    width: 44%;
+    text-align: right;
+}
+.bills-total-amount {
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 4px;
+    color: $red;
+    float: left;
+    width: 26%;
+    text-align: right;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+.bills-overflow {
+    max-height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.bills-wrapper {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.bills-wrapper-cell {
+    display: table-cell;
+    vertical-align: bottom;
+    padding: 20px 20px 0;
+    &-va-center {
+        vertical-align: middle;
+    }
+}
+.bills-block-edit {
+    display: block;
+    padding-left: 25px;
+    position: relative;
+    margin: 0 -5px 20px 0;
+    input.input-text,
+    .select-wrapper {
+        color: $red;
+    }
+}
+.bills-edit-control {
+    position: absolute;
+    float: left;
+    width: 25px;
+    top: 0;
+    left: 0;
+}
+a.bills-edit-delete {
+    margin: 6px 0;
+    width: 22px;
+    height: 22px;
+    border: 0;
+    background: $w;
+    display: block;
+    position: relative;
+    @include border-radius(50%);
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 12px;
+        height: 1px;
+        margin-left: -6px;
+        margin-top: -0.5px;
+        background: $background;
+        @include transition(all $d $f);
+    }
+    &:active {
+        bottom: -1px;
+    }
+    &-confirm {
+        background-color: $red;
+        &:before {
+            @include transform(rotate(45deg));
+        }
+        &:after {
+            @include transform(rotate(-45deg));
+        }
+    }
+}
+.bills-edit-date {
+    float: left;
+    width: 20%;
+    padding: 0 5px;
+}
+.bills-edit-info {
+    float: left;
+    width: 51%;
+    padding: 0 5px;
+    input.input-text {
+        text-align: left;
+    }
+}
+.bills-edit-amount {
+    padding: 0 5px;
+    float: left;
+    width: 29%;
+    input.input-text {
+        text-align: right;
+    }
+}
+.bills-edit-info,
+.bills-edit-amount {
+    input.input-text {
+        @include placeholder {
+            color: $red;
+        }
+    }
+}
+//screen saving ///////////////////////////////////////////
+.screen-saving {
+    .panel-bottom {
+        padding-top: 5px;
+    }
+}
+.saving-info {
+    text-align: center;
+    color: $blue;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 0 10px 10px;
+    letter-spacing: 0.2px;
+    .select-wrapper {
+        color: $blue;
+        position: relative;
+        top: -2px;
+        padding-bottom: 4px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+}
+.saving-navigation {
+    text-align: center;
+    margin-left: -9px;
+    margin-right: -9px;
+    padding-bottom: 3px;
+    a.button {
+        margin: 0 9px 17px;
+        color: $blue;
+        &.disabled {
+            color: #9B9B9B !important;
+            cursor: default;
+        }
+    }
+}
+//screen spending ///////////////////////////////////////////
+.spending-info {
+    text-align: center;
+    color: $green;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 0 10px 15px;
+    letter-spacing: 0.2px;
+}
+.spending-navigation {
+    text-align: center;
+    margin-left: -9px;
+    margin-right: -9px;
+    padding-bottom: 3px;
+    a.button {
+        margin: 0 9px 17px;
+        color: $green;
+        &.disabled {
+            color: #9B9B9B !important;
+            cursor: default;
+        }
+    }
+}
+//screen your plan ///////////////////////////////////////////
+.your-plan-title {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 26px 0 12px;
+}
+.your-plan-columns-wrapper {
+    margin: 0 auto;
+    max-width: 365px;
+}
+.your-plan-columns {
+    margin: 0 -15px;
+}
+.your-plan-column {
+    text-align: center;
+    float: left;
+    width: 33.333333%;
+    padding: 0 5px;
+}
+a.your-plan-link {
+    &-green {
+        color: $green;
+    }
+    &-red {
+        color: $red;
+    }
+    &-blue {
+        color: $blue;
+    }
+}
+.your-plan-link-total {
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+}
+.your-plan-link-title {
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+}
+.your-plan-link-note {
+    display: block;
+    font-size: 10px;
+    line-height: 16px;
+    font-weight: normal;
+}
+.your-plan-info {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 0 10px 15px;
+    letter-spacing: 0.2px;
+}
+.your-plan-navigation {
+    text-align: center;
+    margin-left: -9px;
+    margin-right: -9px;
+    padding-bottom: 3px;
+    a.button {
+        margin: 0 9px 17px;
+        &.disabled {
+            color: #9B9B9B !important;
+            cursor: default;
+        }
+    }
+}
+.your-plan-graphic {
+    display: table;
+    width: 101px;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+.your-plan-graphic-cell {
+    display: table-cell;
+    width: 100%;
+    vertical-align: bottom;
+    height: 241px;
+}
+//element your plan header ///////////////////////////////////////////
+.your-money-header {
+    text-align: center;
+    color: $black;
+    z-index: 500;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #eee;
+    padding-bottom: 4px;
+    position: absolute;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.75);
+}
+.your-money-columns-wrapper {
+    margin: 0 auto;
+    max-width: 365px;
+}
+.your-money-title {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 26px 0 16px;
+}
+.your-money-columns {
+    height: 44px;
+    position: relative;
+}
+.your-money-column {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100px;
+    text-align: center;
+    @include transition(margin-left 0.3s $f, left 0.3s $f);
+    &-red {
+        margin-left: -50px;
+    }
+    &-green {
+        margin-left: -168px;
+    }
+    &-blue {
+        margin-left: 68px;
+    }
+    &.active {
+        margin-left: -50px;
+    }
+}
+.your-money-link-total {
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+}
+.your-money-link-title {
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+}
+span.your-money-link {
+    &-green {
+        color: $green;
+    }
+    &-red {
+        color: $red;
+    }
+    &-blue {
+        color: $blue;
+    }
+}
+.your-money-back {
+    top: 24px;
+    left: 16px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    padding: 3px 0;
+    @include transform(translate3d(-100px, 0, 0));
+    @include transition(transform 0.3s $f);
+    svg {
+        width: 10px;
+        height: 18px;
+        display: block;
+        margin: 0 auto;
+    }
+    &.active {
+        @include transform(translate3d(0, 0, 0));
+    }
+}
+.your-money-menu {
+    position: absolute;
+    left: 16px;
+    top: 24px;
+    width: 24px;
+    height: 24px;
+    padding: 11px 4px;
+    @include transition(transform 0.3s $f);
+    &.your-money-menu-hide {
+        @include transform(translate3d(-100px, 0, 0));
+    }
+}
+.your-money-menu-icon {
+    display: block;
+    position: relative;
+    width: 16px;
+    height: 2px;
+    background: $bg;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 16px;
+        height: 2px;
+        background: $bg;
+    }
+    &:after {
+        top: auto;
+        bottom: -5px;
+    }
+}
+.your-money-info {
+    position: absolute;
+    right: 16px;
+    top: 24px;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+}
+.your-money-info-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    color: $w;
+    text-align: center;
+    background-color: $bg;
+    @include border-radius(50%);
+}
+//screen your money ///////////////////////////////////////////
+.screen-your-money {
+    background-color: $w;
+    color: $black;
+    text-align: center;
+    a {
+        color: $black;
+    }
+}
+.your-money-content {
+    background: $w;
+    position: relative;
+}
+.your-money-infoblock {
+    padding: 0 20px 15px;
+    background: $w;
+}
+.your-money-infoblock-text {
+    border-top: 2px solid $black;
+    padding-top: 15px;
+}
+.your-money-graphic-group {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    @include transition(all .3s $f);
+}
+.your-money-graphic {
+    padding-top: 46px;
+    position: absolute;
+    left: 50%;
+    top: 112px;
+    bottom: 0;
+    width: 100px;
+    overflow: visible !important;
+    @include transition(margin-left .3s $f, left .3s $f, bottom .3s $f);
+    .graphic-item {
+        position: absolute;
+        bottom: 12px;
+        left: 0;
+        width: 100%;
+        z-index: 1 !important;
+    }
+    &-red {
+        margin-left: -50px;
+    }
+    &-green {
+        margin-left: -168px;
+    }
+    &-blue {
+        margin-left: 68px;
+    }
+    &.active {
+        margin-left: -168px;
+        bottom: 0;
+        .your-money-graphic-group {
+            //padding-top: 46px;
+        }
+        .your-money-graphic-group-index-0 {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            @include transform(translate3d(0, -50%, 0));
+        }
+        .your-money-graphic-group-index-2 {
+            position: absolute;
+            bottom: 50% !important;
+            //top: auto;
+            left: 0;
+        }
+        .your-money-graphic-group-index-1 {
+            position: absolute;
+            bottom: 50% !important;
+            @include transform(translate3d(0, 100%, 0));
+            left: 0;
+        }
+    }
+}
+.graphic-item-description {
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+    width: 250px;
+    @include transform(translate3d(110%, 0, 0));
+    @include transition(transform 0.3s $f, opacity 0.3s $f 0.1s);
+    opacity: 0;
+    &.visible {
+        @include transform(translate3d(0, 0, 0));
+        opacity: 1;
+    }
+}
+.graphic-item-description-wrap {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.graphic-item-description-cell {
+    display: table-cell;
+    //height: 260px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 0 20px 0;
+}
+.your-money-graphic-group-index-2 {
+    .graphic-item-description {
+        top: 0;
+        bottom: auto;
+    }
+    .graphic-item-description-cell {
+        padding-bottom: 0px;
+        padding-top: 10px;
+    }
+}
+.graphic-item-description-amount {
+    font-weight: 600;
+    white-space: nowrap;
+}
+.your-money-graphic-blue-group-index-0,
+.your-money-graphic-blue-group-index-1 {
+    color: #0091FF;
+}
+.your-money-graphic-blue-group-index-2 {
+    color: #02528F;
+}
+.your-money-graphic-red-group-index-0,
+.your-money-graphic-red-group-index-1 {
+    color: #EC293F;
+}
+.your-money-graphic-red-group-index-2 {
+    color: #990A1A;
+}
+.your-money-graphic-green-group-index-0,
+.your-money-graphic-green-group-index-1 {
+    color: #00BC3E;
+}
+
+
