@@ -1442,9 +1442,8 @@ span.your-money-link {
         }
         .your-money-graphic-group-index-0 {
             position: absolute;
-            top: 50%;
+            bottom: 50%;
             left: 0;
-            @include transform(translate3d(0, -50%, 0));
         }
         .your-money-graphic-group-index-1 {
             position: absolute;

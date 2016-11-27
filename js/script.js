@@ -863,6 +863,12 @@ $(document).ready(function(){
             graphicGroup2.css({
                 'margin-bottom': -graphicGroup2.innerHeight()
             });
+        } else if ( graphicGroupLength == 1 ) {
+            graphicGroupSpace = ($('body').innerHeight() - $('.your-money-header').innerHeight());
+            var graphicGroup2 = element.find('.your-money-graphic-group').eq(0);
+            graphicGroup2.css({
+                'margin-bottom': graphicGroup2.innerHeight()/2
+            });
         }
         element.find('.your-money-graphic-group').each(function(index, el) {
             var thisElementHeight = $(this).innerHeight();
@@ -1046,10 +1052,6 @@ $(document).ready(function(){
                  easing: "easeInOutCirc"
             }, 300);
         }
-    });
-    $('.your-money-menu').click(function() {
-
-
     });
     // $(document).on('swipeleft', function(event) {
     // });
