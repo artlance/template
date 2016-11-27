@@ -86,6 +86,7 @@ $(document).ready(function(){
     var screenYourPlan = $('.screen-your-plan');
     var screenYourMoney = $('.screen-your-money');
     var elementYourMoneyHeader =$('.your-money-header');
+    var screenModalYourMenu = $('.screen-modal-your-menu');
 
 
     $('.go-signup').click(function(){
@@ -837,17 +838,15 @@ $(document).ready(function(){
         threshold: 1
     });
 
-    var graphicResize = false;
 
     var graphicGroupHeight = function(element) {
-        graphicResize = true;
         $('.screen-inside-drag').swipe("disable");
-        var graphicGroupSpace = ($('body').innerHeight() - $('.your-money-header').innerHeight());
-        element.animate({
-            height: graphicGroupSpace
-        }, 300, function() {
-            graphicResize = false;
-        });
+        //var graphicGroupSpace = ($('body').innerHeight() - $('.your-money-header').innerHeight());
+        // element.animate({
+        //     height: graphicGroupSpace
+        // }, 300, function() {
+        //     graphicResize = false;
+        // });
         var graphicDescriptionWidth = $('body').innerWidth() - element.innerWidth() - 25;
         if ( graphicDescriptionWidth > 250 ) {
             graphicDescriptionWidth = 250;
@@ -860,6 +859,10 @@ $(document).ready(function(){
         var graphicGroupLength = element.find('.your-money-graphic-group').length;
         if ( graphicGroupLength >= 2 ) {
             graphicGroupSpace = ($('body').innerHeight() - $('.your-money-header').innerHeight())/2;
+            var graphicGroup2 = element.find('.your-money-graphic-group').eq(0);
+            graphicGroup2.css({
+                'margin-bottom': -graphicGroup2.innerHeight()
+            });
         }
         element.find('.your-money-graphic-group').each(function(index, el) {
             var thisElementHeight = $(this).innerHeight();
@@ -876,9 +879,7 @@ $(document).ready(function(){
     }
 
     $(window).resize(function() {
-        if ( !graphicResize ) {
-            graphicGroupHeight($('.your-money-graphic.active'));
-        }
+        graphicGroupHeight($('.your-money-graphic.active'));
         var graphicResizeOffset =  $('body').innerWidth()+40;
         if ( $('.your-money-graphic-red').hasClass('active') ) {
             $('.your-money-graphic-green, .your-money-column-green').css({
@@ -914,6 +915,9 @@ $(document).ready(function(){
             top: 0
         });
         var grParent = $(this).parents('.your-money-graphic');
+        grParent.find('.your-money-graphic-group').each(function(index, el) {
+            $(this).addClass('your-money-graphic-group-animated');
+        });
         graphicGroupHeight(grParent);
         var graphicOffset =  $('body').innerWidth()+10;
         var graphicWidth =  $('.your-money-graphic').innerWidth()+10;
@@ -937,6 +941,9 @@ $(document).ready(function(){
             top: 0
         });
         var grParent = $(this).parents('.your-money-graphic');
+        grParent.find('.your-money-graphic-group').each(function(index, el) {
+            $(this).addClass('your-money-graphic-group-animated');
+        });
         graphicGroupHeight(grParent);
         var graphicOffset =  $('body').innerWidth()+10;
         var graphicWidth =  $('.your-money-graphic').innerWidth()+10;
@@ -952,28 +959,28 @@ $(document).ready(function(){
         $('.your-money-graphic-red .graphic-item-description').addClass('visible');
     });
 
-    $('.your-money-graphic-green-group-index-0, .your-money-graphic-green-group-index-1, .your-money-graphic-green-group-index-2').on('click', function(event) {
-        event.preventDefault();
-        $('.your-money-menu').addClass('your-money-menu-hide');
-        $('.your-money-back').addClass('active');
-        screenYourMoney.css({
-            top: 0
-        });
-        var grParent = $(this).parents('.your-money-graphic');
-        graphicGroupHeight(grParent);
-        var graphicOffset =  $('body').innerWidth()+10;
-        var graphicWidth =  $('.your-money-graphic').innerWidth()+10;
-        $('.your-money-graphic-red, .your-money-column-red').css({
-            'left': graphicOffset,
-            'margin-left': 0
-        });
-        $('.your-money-graphic-blue, .your-money-column-blue').css({
-            'left': graphicOffset,
-            'margin-left': 0
-        });
-        $('.your-money-graphic-green, .your-money-column-green').addClass('active');
-        $('.your-money-graphic-green .graphic-item-description').addClass('visible');
-    });
+    // $('.your-money-graphic-green-group-index-0, .your-money-graphic-green-group-index-1, .your-money-graphic-green-group-index-2').on('click', function(event) {
+    //     event.preventDefault();
+    //     $('.your-money-menu').addClass('your-money-menu-hide');
+    //     $('.your-money-back').addClass('active');
+    //     screenYourMoney.css({
+    //         top: 0
+    //     });
+    //     var grParent = $(this).parents('.your-money-graphic');
+    //     graphicGroupHeight(grParent);
+    //     var graphicOffset =  $('body').innerWidth()+10;
+    //     var graphicWidth =  $('.your-money-graphic').innerWidth()+10;
+    //     $('.your-money-graphic-red, .your-money-column-red').css({
+    //         'left': graphicOffset,
+    //         'margin-left': 0
+    //     });
+    //     $('.your-money-graphic-blue, .your-money-column-blue').css({
+    //         'left': graphicOffset,
+    //         'margin-left': 0
+    //     });
+    //     $('.your-money-graphic-green, .your-money-column-green').addClass('active');
+    //     $('.your-money-graphic-green .graphic-item-description').addClass('visible');
+    // });
 
     $('.your-money-back').on('click', function(event) {
         event.preventDefault();
@@ -992,6 +999,57 @@ $(document).ready(function(){
 
         $('.your-money-graphic-green, .your-money-column-green').removeClass('active');
         $('.your-money-graphic-green .graphic-item-description').removeClass('visible');
+
+        $('.your-money-graphic-group').each(function(index, el) {
+            $(this).css({
+                'margin-bottom': 0
+            });
+        });
+    });
+
+    $('.your-money-graphic').each(function(index, el) {
+        $(this).find('.your-money-graphic-group').each(function(index, el) {
+            if (index >= 1) {
+                $(this).css({
+                    bottom: $(this).prev('.your-money-graphic-group').innerHeight() - 51 + 12
+                });
+            } else if (index == 0) {
+                $(this).css({
+                    bottom: 12
+                });
+            }
+            var thisLength = $(this).find('.graphic-item').length - 1;
+            $(this).css({
+               height: thisLength*5 + 51
+            });
+            $(this).find('.graphic-item').each(function(index, el) {
+                $(this).css({
+                    bottom: 5*index
+                });
+            });
+        });
+    });
+
+    $('.your-money-menu').on('click', function(event) {
+        if ( $(this).hasClass('active') ) {
+            $(this).removeClass('active');
+            screenModalYourMenu
+            .hide("slide", {
+                 direction: "left",
+                 easing: "easeInOutCirc"
+            }, 300);
+        } else {
+            $(this).addClass('active');
+            screenModalYourMenu
+            .show("slide", {
+                 direction: "left",
+                 easing: "easeInOutCirc"
+            }, 300);
+        }
+    });
+    $('.your-money-menu').click(function() {
+
+
     });
     // $(document).on('swipeleft', function(event) {
     // });
@@ -1097,27 +1155,6 @@ $(document).ready(function(){
     //         }
     //     });
     // });
-
-
-    $('.your-money-graphic').each(function(index, el) {
-        $(this).find('.your-money-graphic-group').each(function(index, el) {
-            if (index >= 1) {
-                $(this).css({
-                    bottom: $(this).prev('.your-money-graphic-group').innerHeight() - 51
-                });
-            }
-            var thisLength = $(this).find('.graphic-item').length - 1;
-            $(this).css({
-               height: thisLength*5 + 51
-            });
-            $(this).find('.graphic-item').each(function(index, el) {
-                $(this).css({
-                    bottom: 5*index
-                });
-            });
-        });
-    });
-
 
 
 

@@ -1317,9 +1317,24 @@ span.your-money-link {
     width: 24px;
     height: 24px;
     padding: 11px 4px;
+    z-index: 550;
     @include transition(transform 0.3s $f);
     &.your-money-menu-hide {
         @include transform(translate3d(-100px, 0, 0));
+    }
+    &.active {
+        z-index: 8080;
+        .your-money-menu-icon {
+            background-color: transparent;
+            &:before {
+                @include transform(rotate(45deg));
+                background-color: $w;
+            }
+            &:after {
+                @include transform(rotate(-45deg));
+                background-color: $w;
+            }
+        }
     }
 }
 .your-money-menu-icon {
@@ -1328,19 +1343,21 @@ span.your-money-link {
     width: 16px;
     height: 2px;
     background: $bg;
+    @include transition(background-color 0.15s $f);
     &:before,
     &:after {
         content: "";
         position: absolute;
-        top: -5px;
+        @include transform(translate3d(0, -5px, 0));
         left: 0;
+        top: 0;
         width: 16px;
         height: 2px;
         background: $bg;
+        @include transition(background-color 0.15s $f, transform 0.15s $f);
     }
     &:after {
-        top: auto;
-        bottom: -5px;
+        @include transform(translate3d(0, 5px, 0));
     }
 }
 .your-money-info {
@@ -1388,7 +1405,9 @@ span.your-money-link {
     left: 0;
     bottom: 0;
     width: 100%;
-    @include transition(all .3s $f);
+    &.your-money-graphic-group-animated {
+        @include transition(bottom .3s $f, margin .3s $f);
+    }
 }
 .your-money-graphic {
     padding-top: 46px;
@@ -1427,16 +1446,16 @@ span.your-money-link {
             left: 0;
             @include transform(translate3d(0, -50%, 0));
         }
-        .your-money-graphic-group-index-2 {
+        .your-money-graphic-group-index-1 {
             position: absolute;
             bottom: 50% !important;
             //top: auto;
             left: 0;
         }
-        .your-money-graphic-group-index-1 {
+        .your-money-graphic-group-index-2 {
             position: absolute;
             bottom: 50% !important;
-            @include transform(translate3d(0, 100%, 0));
+            margin-bottom: -300px;
             left: 0;
         }
     }
@@ -1447,7 +1466,7 @@ span.your-money-link {
     left: 100px;
     width: 250px;
     @include transform(translate3d(110%, 0, 0));
-    @include transition(transform 0.3s $f, opacity 0.3s $f 0.1s);
+    @include transition(transform 0.2s $f, opacity 0.2s $f);
     opacity: 0;
     &.visible {
         @include transform(translate3d(0, 0, 0));
@@ -1498,5 +1517,26 @@ span.your-money-link {
 .your-money-graphic-green-group-index-1 {
     color: #00BC3E;
 }
+//modal your menu ///////////////////////////////////////////
+.your-menu-title {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 26px 0 16px;
+}
+.your-menu-wrap {
+    padding: 22px 32px;
+}
+.your-menu-list {
+    font-size: 16px;
+    line-height: 22px;
+    li {
+        margin-bottom: 18px;
+        &.your-menu-log-out {
+            margin-top: 58px;
+        }
+    }
+}
+
 
 

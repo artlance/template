@@ -234,6 +234,9 @@ html {
     background: $background;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    &.background-white {
+        background: $w;
+    }
 }
 body {
     position: relative;

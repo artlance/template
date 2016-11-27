@@ -279,6 +279,9 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+html.background-white {
+  background: #ffffff;
+}
 
 body {
   position: relative;
@@ -519,6 +522,12 @@ a.underline {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   background-color: rgba(41, 44, 51, 0.75);
+}
+.screen-modal-dark {
+  z-index: 7010;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 .screen-overflow-hidden {
   overflow: hidden;
@@ -2520,6 +2529,7 @@ span.your-money-link-blue {
   width: 24px;
   height: 24px;
   padding: 11px 4px;
+  z-index: 550;
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
   -moz-transition: -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
@@ -2531,6 +2541,28 @@ span.your-money-link-blue {
   -o-transform: translate3d(-100px, 0, 0);
   transform: translate3d(-100px, 0, 0);
 }
+.your-money-menu.active {
+  z-index: 8080;
+}
+.your-money-menu.active .your-money-menu-icon {
+  background-color: transparent;
+}
+.your-money-menu.active .your-money-menu-icon:before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: #ffffff;
+}
+.your-money-menu.active .your-money-menu-icon:after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: #ffffff;
+}
 
 .your-money-menu-icon {
   display: block;
@@ -2538,19 +2570,33 @@ span.your-money-link-blue {
   width: 16px;
   height: 2px;
   background: #292C33;
+  -webkit-transition: background-color 0.15s ease-in-out;
+  -moz-transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
 }
 .your-money-menu-icon:before, .your-money-menu-icon:after {
   content: "";
   position: absolute;
-  top: -5px;
+  -webkit-transform: translate3d(0, -5px, 0);
+  -moz-transform: translate3d(0, -5px, 0);
+  -ms-transform: translate3d(0, -5px, 0);
+  -o-transform: translate3d(0, -5px, 0);
+  transform: translate3d(0, -5px, 0);
   left: 0;
+  top: 0;
   width: 16px;
   height: 2px;
   background: #292C33;
+  -webkit-transition: background-color 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+  -moz-transition: background-color 0.15s ease-in-out, -moz-transform 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 .your-money-menu-icon:after {
-  top: auto;
-  bottom: -5px;
+  -webkit-transform: translate3d(0, 5px, 0);
+  -moz-transform: translate3d(0, 5px, 0);
+  -ms-transform: translate3d(0, 5px, 0);
+  -o-transform: translate3d(0, 5px, 0);
+  transform: translate3d(0, 5px, 0);
 }
 
 .your-money-info {
@@ -2605,9 +2651,11 @@ span.your-money-link-blue {
   left: 0;
   bottom: 0;
   width: 100%;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+}
+.your-money-graphic-group.your-money-graphic-group-animated {
+  -webkit-transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
+  -moz-transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
+  transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
 }
 
 .your-money-graphic {
@@ -2652,19 +2700,15 @@ span.your-money-link-blue {
   -o-transform: translate3d(0, -50%, 0);
   transform: translate3d(0, -50%, 0);
 }
-.your-money-graphic.active .your-money-graphic-group-index-2 {
+.your-money-graphic.active .your-money-graphic-group-index-1 {
   position: absolute;
   bottom: 50% !important;
   left: 0;
 }
-.your-money-graphic.active .your-money-graphic-group-index-1 {
+.your-money-graphic.active .your-money-graphic-group-index-2 {
   position: absolute;
   bottom: 50% !important;
-  -webkit-transform: translate3d(0, 100%, 0);
-  -moz-transform: translate3d(0, 100%, 0);
-  -ms-transform: translate3d(0, 100%, 0);
-  -o-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
+  margin-bottom: -300px;
   left: 0;
 }
 
@@ -2678,9 +2722,9 @@ span.your-money-link-blue {
   -ms-transform: translate3d(110%, 0, 0);
   -o-transform: translate3d(110%, 0, 0);
   transform: translate3d(110%, 0, 0);
-  -webkit-transition: -webkit-transform 0.3s ease-in-out, opacity 0.3s ease-in-out 0.1s;
-  -moz-transition: -moz-transform 0.3s ease-in-out, opacity 0.3s ease-in-out 0.1s;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out 0.1s;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  -moz-transition: -moz-transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   opacity: 0;
 }
 .graphic-item-description.visible {
@@ -2740,6 +2784,28 @@ span.your-money-link-blue {
 .your-money-graphic-green-group-index-0,
 .your-money-graphic-green-group-index-1 {
   color: #00BC3E;
+}
+
+.your-menu-title {
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 26px 0 16px;
+}
+
+.your-menu-wrap {
+  padding: 22px 32px;
+}
+
+.your-menu-list {
+  font-size: 16px;
+  line-height: 22px;
+}
+.your-menu-list li {
+  margin-bottom: 18px;
+}
+.your-menu-list li.your-menu-log-out {
+  margin-top: 58px;
 }
 
 /* sidebar */
