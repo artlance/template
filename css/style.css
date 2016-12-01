@@ -1431,9 +1431,15 @@ a.button-analyzing-ready-back {
 .graphic-item {
   margin-top: -46px;
   position: relative;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  -moz-transition: -moz-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out, opacity 0.3s linear;
+  -moz-transition: -moz-transform 0.3s ease-in-out, opacity 0.3s linear;
+  transition: transform 0.3s ease-in-out, opacity 0.3s linear;
+}
+.graphic-item-hidden {
+  opacity: 0;
+}
+.graphic-item-shown {
+  opacity: 1;
 }
 .graphic-item svg {
   display: block;
@@ -2622,8 +2628,108 @@ span.your-money-link-blue {
   border-radius: 50%;
 }
 
-.screen-your-money {
+.spending-money-header {
+  text-align: center;
+  color: #ffffff;
+  z-index: 500;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 4px;
+  position: absolute;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  background-color: #00BC3E;
+}
+
+.spending-money-title {
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 26px 0 16px;
+}
+
+.spending-money-back {
+  top: 24px;
+  left: 16px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  padding: 3px 0;
+  -webkit-transform: translate3d(-100px, 0, 0);
+  -moz-transform: translate3d(-100px, 0, 0);
+  -ms-transform: translate3d(-100px, 0, 0);
+  -o-transform: translate3d(-100px, 0, 0);
+  transform: translate3d(-100px, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+.spending-money-back svg {
+  width: 10px;
+  height: 18px;
+  display: block;
+  margin: 0 auto;
+}
+.spending-money-back.active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.spending-money-info {
+  position: absolute;
+  right: 16px;
+  top: 24px;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
+
+.spending-money-info-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  text-align: center;
   background-color: #ffffff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.spending-money-subtitle {
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  height: 43px;
+  letter-spacing: 0.2px;
+  padding: 0 20px;
+}
+
+.spending-money-subtitle-amount {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.your-money-graphic-green-pull {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background: #f00;
+}
+
+.your-money-graphic-green-pull-bottom {
+  background: #f0f;
+}
+
+.screen-your-money {
   color: #000000;
   text-align: center;
 }
@@ -2651,6 +2757,12 @@ span.your-money-link-blue {
   left: 0;
   bottom: 0;
   width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.your-money-graphic-group * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 .your-money-graphic-group.your-money-graphic-group-animated {
   -webkit-transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
@@ -2665,7 +2777,6 @@ span.your-money-link-blue {
   top: 112px;
   bottom: 0;
   width: 100px;
-  overflow: visible !important;
   -webkit-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
   -moz-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
   transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
@@ -2721,8 +2832,10 @@ span.your-money-link-blue {
   -moz-transition: -moz-transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   opacity: 0;
+  visibility: hidden;
 }
 .graphic-item-description.visible {
+  visibility: visible;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -2742,6 +2855,58 @@ span.your-money-link-blue {
   vertical-align: middle;
   text-align: center;
   padding: 0 0 20px 0;
+}
+
+.graphic-item-subgroup-description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 340px;
+  -webkit-transform: translate3d(110%, 0, 0);
+  -moz-transform: translate3d(110%, 0, 0);
+  -ms-transform: translate3d(110%, 0, 0);
+  -o-transform: translate3d(110%, 0, 0);
+  transform: translate3d(110%, 0, 0);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+.graphic-item-subgroup-description.visible {
+  visibility: visible;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+.graphic-item-subgroup-description.visible .graphic-item-subgroup-description-cell {
+  border-bottom-color: #D9D9D9;
+}
+
+.graphic-item-subgroup-description-wrap {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.graphic-item-subgroup-description-cell {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 0 0px 100px;
+  color: #00BC3E;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: border-bottom-color 0.2s ease-in-out;
+  -moz-transition: border-bottom-color 0.2s ease-in-out;
+  transition: border-bottom-color 0.2s ease-in-out;
+}
+.graphic-item-subgroup-description-cell p {
+  display: inline-block;
+  padding: 0 2px;
 }
 
 .your-money-graphic-group-index-2 .graphic-item-description {
@@ -2779,6 +2944,37 @@ span.your-money-link-blue {
 .your-money-graphic-green-group-index-0,
 .your-money-graphic-green-group-index-1 {
   color: #00BC3E;
+}
+
+.graphic-item-green-subgroup {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+}
+.graphic-item-green-subgroup.graphic-item-green-subgroup-animated {
+  -webkit-transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
+  -moz-transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
+  transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+.graphic-item-green-subgroup-today .graphic-item-subgroup-description-cell p {
+  color: #ffffff;
+  background-color: #00BC3E;
+}
+.graphic-item-green-subgroup-gray .graphic-item-subgroup-description-cell p {
+  color: #9B9B9B;
+}
+.graphic-item-green-subgroup.last-child .graphic-item-subgroup-description-cell {
+  border-bottom-color: transparent !important;
+}
+.graphic-item-green-subgroup.subgroup-active .graphic-item {
+  margin-bottom: 20px;
+}
+
+.graphic-item-green-subgroup-today.graphic-item-green-subgroup-animated {
+  -webkit-transition: margin 0s ease-in-out;
+  -moz-transition: margin 0s ease-in-out;
+  transition: margin 0s ease-in-out;
 }
 
 .your-menu-title {
