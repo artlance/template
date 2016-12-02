@@ -1458,13 +1458,26 @@ span.your-money-link {
 .your-money-graphic-green-pull {
     position: absolute;
     left: 0;
-    right: 0;
+    width: 100%;
     bottom: 0;
-    height: 0;
-    background: #f00;
+    top: 0;
+    background: $tr;
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 100;
+    display: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    * {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+    }
 }
-.your-money-graphic-green-pull-bottom {
-    background: #f0f;
+.your-money-graphic-green-push {
+    display: block;
+    position: relative;
+    background: $tr;
 }
 //screen your money ///////////////////////////////////////////
 .screen-your-money {
@@ -1491,12 +1504,6 @@ span.your-money-link {
     left: 0;
     bottom: 0;
     width: 100%;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
-    * {
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent;
-    }
     &.your-money-graphic-group-animated {
         @include transition(bottom .3s $f, margin .3s $f);
     }
@@ -1508,7 +1515,13 @@ span.your-money-link {
     top: 112px;
     bottom: 0;
     width: 100px;
-    @include transition(margin-left .3s $f, left .3s $f, bottom .3s $f);
+    @include transition(margin-left .3s $f, left .3s $f, bottom .3s $f, transform .3s $f);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    * {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+    }
     .graphic-item {
         position: absolute;
         bottom: 12px;
@@ -1521,6 +1534,9 @@ span.your-money-link {
     }
     &-green {
         margin-left: -168px;
+        &.active {
+            @include transition(margin-left .3s $f, left .3s $f, bottom .3s $f);
+        }
     }
     &-blue {
         margin-left: 68px;
@@ -1589,7 +1605,7 @@ span.your-money-link {
     visibility: hidden;
     overflow: hidden;
     &.visible {
-        visibility: visible;
+        visibility: visible !important;
         @include transform(translate3d(0, 0, 0));
         opacity: 1;
         .graphic-item-subgroup-description-cell {
@@ -1651,7 +1667,6 @@ span.your-money-link {
     color: #00BC3E;
 }
 .your-money-graphic-green {
-    //margin-bottom: 550px;
 }
 .graphic-item-green-subgroup {
     //background: rgba(255, 0, 255, 0.5);
@@ -1660,7 +1675,7 @@ span.your-money-link {
     width: 100%;
     bottom: 0;
     &.graphic-item-green-subgroup-animated {
-        @include transition(bottom .3s $f, margin .3s $f);
+        @include transition(transform .3s $f);
     }
     &-today {
         .graphic-item-subgroup-description-cell {
@@ -1683,13 +1698,13 @@ span.your-money-link {
         }
     }
     &.subgroup-active {
-        .graphic-item {
-            margin-bottom: 20px;
-        }
+    }
+    .graphic-item {
+        margin-bottom: 20px;
     }
 }
 .graphic-item-green-subgroup-today.graphic-item-green-subgroup-animated {
-    @include transition(margin 0s $f);
+    //@include transition(margin 0s $f);
 }
 
 //modal your menu ///////////////////////////////////////////

@@ -2719,14 +2719,27 @@ span.your-money-link-blue {
 .your-money-graphic-green-pull {
   position: absolute;
   left: 0;
-  right: 0;
+  width: 100%;
   bottom: 0;
-  height: 0;
-  background: #f00;
+  top: 0;
+  background: transparent;
+  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 100;
+  display: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.your-money-graphic-green-pull * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.your-money-graphic-green-pull-bottom {
-  background: #f0f;
+.your-money-graphic-green-push {
+  display: block;
+  position: relative;
+  background: transparent;
 }
 
 .screen-your-money {
@@ -2757,12 +2770,6 @@ span.your-money-link-blue {
   left: 0;
   bottom: 0;
   width: 100%;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-tap-highlight-color: transparent;
-}
-.your-money-graphic-group * {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-tap-highlight-color: transparent;
 }
 .your-money-graphic-group.your-money-graphic-group-animated {
   -webkit-transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
@@ -2777,9 +2784,15 @@ span.your-money-link-blue {
   top: 112px;
   bottom: 0;
   width: 100px;
-  -webkit-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
-  -moz-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
-  transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  -webkit-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  -moz-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
+  transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out, transform 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.your-money-graphic * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 .your-money-graphic .graphic-item {
   position: absolute;
@@ -2793,6 +2806,11 @@ span.your-money-link-blue {
 }
 .your-money-graphic-green {
   margin-left: -168px;
+}
+.your-money-graphic-green.active {
+  -webkit-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  -moz-transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  transition: margin-left 0.3s ease-in-out, left 0.3s ease-in-out, bottom 0.3s ease-in-out;
 }
 .your-money-graphic-blue {
   margin-left: 68px;
@@ -2875,7 +2893,7 @@ span.your-money-link-blue {
   overflow: hidden;
 }
 .graphic-item-subgroup-description.visible {
-  visibility: visible;
+  visibility: visible !important;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -2953,9 +2971,9 @@ span.your-money-link-blue {
   bottom: 0;
 }
 .graphic-item-green-subgroup.graphic-item-green-subgroup-animated {
-  -webkit-transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
-  -moz-transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
-  transition: bottom 0.3s ease-in-out, margin 0.3s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 .graphic-item-green-subgroup-today .graphic-item-subgroup-description-cell p {
   color: #ffffff;
@@ -2967,14 +2985,8 @@ span.your-money-link-blue {
 .graphic-item-green-subgroup.last-child .graphic-item-subgroup-description-cell {
   border-bottom-color: transparent !important;
 }
-.graphic-item-green-subgroup.subgroup-active .graphic-item {
+.graphic-item-green-subgroup .graphic-item {
   margin-bottom: 20px;
-}
-
-.graphic-item-green-subgroup-today.graphic-item-green-subgroup-animated {
-  -webkit-transition: margin 0s ease-in-out;
-  -moz-transition: margin 0s ease-in-out;
-  transition: margin 0s ease-in-out;
 }
 
 .your-menu-title {

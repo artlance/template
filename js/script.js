@@ -767,8 +767,6 @@ $(document).ready(function(){
         }, 300);
     });
 
-    var yourMoneyInfoblock = $('.your-money-infoblock').innerHeight();
-
     $('.go-finish').click(function() {
         //$('body').addClass('current-screen-your-money');
         screenYourPlan
@@ -846,7 +844,7 @@ $(document).ready(function(){
     }
 
     $(window).resize(function() {
-        graphicGroupHeight($('.your-money-graphic.active'));
+        graphicGroupHeight($('.your-money-graphic:not(".your-money-graphic-green").active'));
         var graphicResizeOffset =  $('body').innerWidth()+40;
         if ( $('.your-money-graphic-red').hasClass('active') ) {
             $('.your-money-graphic-green, .your-money-column-green').css({
@@ -857,11 +855,11 @@ $(document).ready(function(){
             });
         }
         if ( $('.your-money-graphic-green').hasClass('active') ) {
-            $('.your-money-graphic-red, .your-money-column-red').css({
-                'left': graphicResizeOffset
+            $('.your-money-graphic-red').css({
+                'transform': 'translateX('+graphicResizeOffset+'px)'
             });
-            $('.your-money-graphic-blue, .your-money-column-blue').css({
-                'left': graphicResizeOffset
+            $('.your-money-graphic-blue').css({
+                'transform': 'translateX('+graphicResizeOffset+'px)'
             });
         }
         if ( $('.your-money-graphic-blue').hasClass('active') ) {
@@ -979,21 +977,25 @@ $(document).ready(function(){
             var thisLength = $(this).find('.graphic-item').length;
             hiddenElementsOffset += $(this).find('.graphic-item-hidden').length*5;
             $(this).css({
-               height: thisLength*5,
-               bottom: subgroupTotalElements,
+               bottom: subgroupTotalElements -20,
                'margin-bottom': -hiddenElementsOffset
             });
             subgroupTotalElements += $(this).find('.graphic-item').length*5;
             //subgroupTotalElements += 49;
             //console.log(subgroupTotalElements);
             var thisLength = $(this).find('.graphic-item').length - 1;
-            $(this).css({
-               height: thisLength*5 + 51
-            });
             $(this).find('.graphic-item').each(function(index, el) {
                 $(this).css({
                     bottom: 5*index
                 });
+            });
+            //
+            $(this).css({
+                height: thisLength*5 + 51 + 37
+            });
+            $(this).addClass('subgroup-active');
+            $(this).find('.graphic-item-subgroup-description-cell').css({
+                height: thisLength*5 + 51 + 37
             });
         });
     });
@@ -1022,122 +1024,150 @@ $(document).ready(function(){
 
     var greenActive = false;
     $('.your-money-graphic-green').on('click', function(event) {
+        event.preventDefault();
         if (!greenActive) {
-        $('.your-money-graphic-green').addClass('active');
-        $('.spending-money-back').addClass('active');
+            $('.your-money-graphic-green').addClass('active');
+            $('.spending-money-back').addClass('active');
+
+            $('.your-money-infoblock')
+            .hide("slide", {
+                 direction: "down",
+                 easing: "easeInOutCirc"
+            }, 300);
+            screenYourMoney.css({
+                top: 0
+            });
+            //$('.screen-your-money').removeClass('screen-overflow-hidden');
+
+            $('.screen-inside-drag').swipe("disable");
+
+            $('.your-money-menu').addClass('your-money-menu-hide');
+            elementYourMoneyHeader
+            .hide("slide", {
+                 direction: "left",
+                 easing: "easeInOutCirc"
+            }, 300);
+            elementSpendingMoneyHeader
+            .show("slide", {
+                 direction: "right",
+                 easing: "easeInOutCirc"
+            }, 300);
+            var graphicOffset =  $('body').innerWidth()+10;
+            $('.your-money-graphic-red').css({
+                'transform': 'translateX('+graphicOffset+'px)'
+            });
+            $('.your-money-graphic-blue').css({
+                'transform': 'translateX('+graphicOffset+'px)'
+            });
+
+            $(this).find('.graphic-item-subgroup-description').each(function(index, el) {
+                $(this).addClass('visible');
+                $(this).css({
+                    visibility: 'visible'
+                });
+            });
+
+            var subgroupToday = $('.graphic-item-green-subgroup-today').index();
+            $(this).find('.graphic-item-hidden').addClass('graphic-item-shown');
+            var subgroups = $(this).find('.graphic-item-green-subgroup');
+            var subgroupsLength = subgroups.length;
+
+            var pullTotalTop = 0;
+
+            var spendingMoneyHeaderHeight = elementSpendingMoneyHeader.innerHeight();
+
+            var elementPrevHeight = 0;
+            var elementTodayOffset = 0;
+
+            subgroups.slice(subgroupToday+1, subgroupsLength).each(function(index, el) {
+                pullTotalTop += parseInt($(this).css('height'));
+            });
+
+            for (var i = subgroups.length - 1; i > -1; i--) {
+                var thisElement = $(subgroups[i]);
+                var thisElementOffsetTop = thisElement.offset().top;
+                var thisElementHeight = parseInt(thisElement.css('height'));
+                var thisElementTranslateX = -thisElementOffsetTop + spendingMoneyHeaderHeight + elementPrevHeight - pullTotalTop;
+                thisElement.css({
+                    'transform': 'translateY('+thisElementTranslateX+'px)'
+                });
+                elementPrevHeight += thisElementHeight;
+            }
+
+            $('.your-money-graphic-green-pull').css({
+                display: 'block'
+            });
+            $('.your-money-graphic-green-push').css({
+                height: elementPrevHeight - pullTotalTop + elementSpendingMoneyHeader.innerHeight(),
+                'top': pullTotalTop
+            });
+            console.log(pullTotalTop);
+            $('.your-money-graphic-green-pull').scrollTop(pullTotalTop);
+        }
+        greenActive = true;
+    });
+    $('.your-money-graphic-green-pull').on('scroll', function(event) {
+        var scrollPosition = $('.your-money-graphic-green-push').offset().top;
+        $('.your-money-graphic-green').css({
+            'transform': 'translateY('+scrollPosition+'px)'
+        });
+    });
+
+    $('.graphic-item').on('click', function(event) {
+        event.preventDefault();
+        console.log('click');
+    });
+
+    $('.your-money-graphic-green-pull').on('click', function(event) {
+        $('.your-money-graphic-green-pull').hide();
+        $(document.elementFromPoint(event.clientX, event.clientY)).trigger("click");
+        $('.your-money-graphic-green-pull').show();
+    });
+
+    $('.spending-money-back').on('click', function(event) {
+        event.preventDefault();
+        $('.your-money-graphic-green-pull').hide();
+        $('.your-money-graphic-green').css({
+            'transform': 'translateY(0px)'
+        });
+        $('.your-money-graphic-green').removeClass('active');
+        $('.spending-money-back').removeClass('active');
+        $('.screen-inside-drag').swipe("enable");
+        $('.your-money-menu').removeClass('your-money-menu-hide');
 
         $('.your-money-infoblock')
-        .hide("slide", {
+        .show("slide", {
              direction: "down",
              easing: "easeInOutCirc"
         }, 300);
-        screenYourMoney.css({
-            top: 0
-        });
-        //$('.screen-your-money').removeClass('screen-overflow-hidden');
-
-        event.preventDefault();
-        $('.screen-inside-drag').swipe("disable");
-
-        $('.your-money-menu').addClass('your-money-menu-hide');
         elementYourMoneyHeader
-        .hide("slide", {
+        .show("slide", {
              direction: "left",
              easing: "easeInOutCirc"
-        }, 300);
+        }, 300, function() {
+            greenActive = false;
+            backSubgroups.find('.graphic-item-subgroup-description').css({
+                visibility: 'hidden'
+            });
+        });
         elementSpendingMoneyHeader
-        .show("slide", {
+        .hide("slide", {
              direction: "right",
              easing: "easeInOutCirc"
         }, 300);
-        var graphicOffset =  $('body').innerWidth()+10;
+
+        var backSubgroups = $('.graphic-item-green-subgroup');
+        backSubgroups.css({
+            'transform': 'translateY(0px)'
+        });
+        backSubgroups.find('.graphic-item-hidden').removeClass('graphic-item-shown');
         $('.your-money-graphic-red').css({
-            'left': graphicOffset,
-            'margin-left': 0
+            'transform': 'translateX(0px)'
         });
         $('.your-money-graphic-blue').css({
-            'left': graphicOffset,
-            'margin-left': 0
+            'transform': 'translateX(0px)'
         });
-
-        $(this).find('.graphic-item-subgroup-description').each(function(index, el) {
-            $(this).addClass('visible');
-        });
-
-        var subgroupActivePush = 20;
-
-        var subgroupToday = $('.graphic-item-green-subgroup-today').index();
-        var subgroupTodayBottom = parseInt($('.graphic-item-green-subgroup-today').css('bottom'));
-        var subgroupTodayMarginBottom = parseInt($('.graphic-item-green-subgroup-today').css('marginBottom'));
-        //console.log(subgroupToday +'index today');
-        $(this).find('.graphic-item-hidden').addClass('graphic-item-shown');
-        var currentBottomMore = 0;
-        var currentBottomLess = 0;
-        var bottomDiffMore = 0;
-        var subgroups = $(this).find('.graphic-item-green-subgroup');
-        subgroups.each(function(index, el) {
-            var thisHeight = parseInt($(this).css('height'))+37;
-            $(this).css({
-                height: thisHeight
-            });
-            $(this).addClass('subgroup-active');
-            $(this).find('.graphic-item-subgroup-description-cell').css({
-                height: thisHeight
-            });
-        });
-        var subgroupsLength = subgroups.length;
-        var bottomGroup = subgroups.slice(0, subgroupToday);
-        var prevOffset = 0;
-
-        var pullTotalTop = 0;
-        var pullTotalBottom = 0;
-
-        for (var i = bottomGroup.length - 1; i > -1; i--) {
-            var thisElement = $(bottomGroup[i]);
-            var thisBottom = parseInt(thisElement.css('height'))
-            currentBottomLess = parseInt(thisElement.next('.graphic-item-green-subgroup').css('bottom'));
-            if ( prevOffset != 0 ) {
-                currentBottomLess = prevOffset;
-            }
-            thisElement.css({
-                bottom: currentBottomLess - thisBottom - subgroupActivePush,
-                'margin-bottom': subgroupTodayMarginBottom
-            });
-            prevOffset = currentBottomLess - thisBottom;
-            pullTotalBottom += thisBottom;
-        }
-
-        $('.graphic-item-green-subgroup-today').css({
-            'margin-bottom': subgroupTodayMarginBottom - subgroupActivePush
-        });
-
-        subgroups.slice(subgroupToday+1, subgroupsLength).each(function(index, el) {
-            var thisBottom = parseInt($(this).css('bottom'));
-            var thisHeight = parseInt($(this).css('height'));
-            currentBottomMore += parseInt($(this).prev('.graphic-item-green-subgroup').css('height'));
-            bottomDiffMore += parseInt($(this).css('bottom')) - parseInt($(this).prev('.graphic-item-green-subgroup').css('bottom'));
-            $(this).css({
-                bottom: thisBottom + currentBottomMore - bottomDiffMore - subgroupActivePush,
-                'margin-bottom': subgroupTodayMarginBottom
-            });
-            pullTotalTop += thisHeight;
-        });
-
-        var subgroupTodayPull = parseInt($('.graphic-item-green-subgroup-today').css('height'));
-
-        // console.log(pullTotalBottom);
-        // console.log(pullTotalTop);
-
-        // $('.your-money-graphic-green-pull').css({
-        //     bottom: -850,
-        //     height: pullTotalBottom+pullTotalTop+subgroupTodayPull,
-        //     'margin-bottom': subgroupTodayMarginBottom
-        // });
-        // $('.screen-your-money').css({
-        //     height: pullTotalBottom+pullTotalTop+subgroupTodayPull-subgroupTodayMarginBottom
-        // });
-        }
-        greenActive = true;
+        backSubgroups.find('.graphic-item-subgroup-description').removeClass('visible');
     });
     // $(document).on('swipeleft', function(event) {
     // });
@@ -1287,6 +1317,8 @@ $(window).load(function() {
     });
 
     //------------------------------------------------------------------------//
+
+    var yourMoneyInfoblock = $('.your-money-infoblock').innerHeight();
 
     $(window).resize(function() {
         yourMoneyInfoblock = $('.your-money-infoblock').innerHeight();
