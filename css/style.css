@@ -822,6 +822,18 @@ button.button-ghost {
   background-color: #292C33;
   color: #ffffff;
 }
+a.button-transparent,
+input.button-transparent,
+button.button-transparent {
+  background-color: transparent;
+  color: #ffffff;
+}
+a.button-disabled,
+input.button-disabled,
+button.button-disabled {
+  color: #9B9B9B !important;
+  cursor: default;
+}
 a.button-max,
 input.button-max,
 button.button-max {
@@ -2091,6 +2103,23 @@ a.button-analyzing-ready-back {
   cursor: default;
 }
 
+.bills-navigation-list-edit {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 3px;
+}
+.bills-navigation-list-edit a.button {
+  margin: 0 9px 17px;
+  color: #EC293F;
+}
+.bills-navigation-list-edit a.button.disabled {
+  color: #9B9B9B !important;
+  cursor: default;
+}
+
 .bills-total {
   padding: 1px 0 10px;
 }
@@ -2250,6 +2279,25 @@ a.bills-edit-delete-confirm:after {
 }
 .bills-edit-amount input.input-text, .bills-edit-amount textarea.textarea {
   text-align: right;
+}
+
+.bills-list-edit .bills-legend {
+  padding-left: 25px;
+  text-align: center;
+  margin-right: -5px;
+}
+.bills-list-edit .bills-legend-due {
+  width: 20%;
+  padding: 0 5px;
+}
+.bills-list-edit .bills-legend-name {
+  width: 51%;
+  padding: 0 5px;
+}
+.bills-list-edit .bills-legend-amount {
+  padding: 0 5px;
+  width: 29%;
+  text-align: center;
 }
 
 .bills-edit-info input.input-text::-webkit-input-placeholder, .bills-edit-info textarea.textarea::-webkit-input-placeholder,
@@ -2871,7 +2919,6 @@ span.your-money-link-blue {
 .graphic-item-description-cell {
   display: table-cell;
   vertical-align: middle;
-  text-align: center;
   padding: 0 0 20px 0;
 }
 
@@ -2914,8 +2961,8 @@ span.your-money-link-blue {
 .graphic-item-subgroup-description-cell {
   display: table-cell;
   vertical-align: middle;
-  text-align: center;
-  padding: 0 0 0px 100px;
+  text-align: left;
+  padding: 0 0 0 120px;
   color: #00BC3E;
   border-bottom: 2px solid transparent;
   -webkit-transition: border-bottom-color 0.2s ease-in-out;
@@ -2925,6 +2972,12 @@ span.your-money-link-blue {
 .graphic-item-subgroup-description-cell p {
   display: inline-block;
   padding: 0 2px;
+}
+
+.graphic-item-subgroup-amount {
+  display: inline-block;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .your-money-graphic-group-index-2 .graphic-item-description {
@@ -3702,6 +3755,18 @@ a.alert-button-cancel {
   .graphic-item-description {
     font-size: 14px;
     left: 90px;
+  }
+
+  .graphic-item-subgroup-description {
+    font-size: 14px;
+  }
+
+  .graphic-item-subgroup-description-cell {
+    padding-left: 100px;
+  }
+
+  .spending-money-subtitle {
+    font-size: 14px;
   }
 }
 /* retina */

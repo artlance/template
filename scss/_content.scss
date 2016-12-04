@@ -947,6 +947,22 @@ a.button-analyzing-ready-back {
         }
     }
 }
+.bills-navigation-list-edit {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding-bottom: 3px;
+    a.button {
+        margin: 0 9px 17px;
+        color: $red;
+        &.disabled {
+            color: #9B9B9B !important;
+            cursor: default;
+        }
+    }
+}
 .bills-total {
     padding: 1px 0 10px;
 }
@@ -1079,6 +1095,26 @@ a.bills-edit-delete {
     width: 29%;
     input.input-text {
         text-align: right;
+    }
+}
+.bills-list-edit {
+    .bills-legend {
+        padding-left: 25px;
+        text-align: center;
+        margin-right: -5px;
+    }
+    .bills-legend-due {
+        width: 20%;
+        padding: 0 5px;
+    }
+    .bills-legend-name {
+        width: 51%;
+        padding: 0 5px;
+    }
+    .bills-legend-amount {
+        padding: 0 5px;
+        width: 29%;
+        text-align: center;
     }
 }
 .bills-edit-info,
@@ -1590,7 +1626,7 @@ span.your-money-link {
     display: table-cell;
     //height: 260px;
     vertical-align: middle;
-    text-align: center;
+    //text-align: center;
     padding: 0 0 20px 0;
 }
 .graphic-item-subgroup-description {
@@ -1622,8 +1658,8 @@ span.your-money-link {
     display: table-cell;
     //height: 260px;
     vertical-align: middle;
-    text-align: center;
-    padding: 0 0 0px 100px;
+    text-align: left;
+    padding: 0 0 0 120px;
     color: $green;
     border-bottom: 2px solid $tr;
     @include transition(border-bottom-color 0.2s $f);
@@ -1633,6 +1669,9 @@ span.your-money-link {
     }
 }
 .graphic-item-subgroup-amount {
+    display: inline-block;
+    font-weight: 600;
+    white-space: nowrap;
 }
 .your-money-graphic-group-index-2 {
     .graphic-item-description {

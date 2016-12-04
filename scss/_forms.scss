@@ -225,6 +225,14 @@ button.button {
         background-color: $bg;
         color: $w;
     }
+    &-transparent {
+        background-color: $tr;
+        color: $w;
+    }
+    &-disabled {
+        color: #9B9B9B !important;
+        cursor: default;
+    }
     &-max {
         width: 236px;
     }
