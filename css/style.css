@@ -560,6 +560,11 @@ a.underline {
   width: 100%;
   height: auto;
 }
+.svg svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 /* forms */
 .error {
@@ -1449,6 +1454,9 @@ a.button-analyzing-ready-back {
 }
 .graphic-item-hidden {
   opacity: 0;
+}
+.graphic-item-empty {
+  opacity: 0 !important;
 }
 .graphic-item-shown {
   opacity: 1;
@@ -2927,6 +2935,7 @@ span.your-money-link-blue {
   bottom: 0;
   left: 0;
   width: 340px;
+  z-index: 2;
   -webkit-transform: translate3d(110%, 0, 0);
   -moz-transform: translate3d(110%, 0, 0);
   -ms-transform: translate3d(110%, 0, 0);
@@ -2962,7 +2971,7 @@ span.your-money-link-blue {
   display: table-cell;
   vertical-align: middle;
   text-align: left;
-  padding: 0 0 0 120px;
+  padding: 0 0 0 110px;
   color: #00BC3E;
   border-bottom: 2px solid transparent;
   -webkit-transition: border-bottom-color 0.2s ease-in-out;
@@ -2974,10 +2983,47 @@ span.your-money-link-blue {
   padding: 0 2px;
 }
 
-.graphic-item-subgroup-amount {
+.subgroup-amount-backlight,
+.subgroup-description-backlight {
   display: inline-block;
+  padding-right: 2px;
+}
+
+.subgroup-amount-backlight {
+  padding-right: 5px;
+  padding-left: 2px;
+}
+
+.graphic-item-subgroup-amount {
+  float: left;
   font-weight: 600;
   white-space: nowrap;
+  width: 45px;
+  text-align: right;
+}
+
+.graphic-item-subgroup-amount-description {
+  overflow: hidden;
+  position: relative;
+  padding-right: 12px;
+}
+
+.graphic-item-subgroup-amount-note {
+  font-size: 10px;
+  line-height: 13px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-top: -1px;
+  letter-spacing: 0.2px;
+}
+
+.graphic-item-subgroup-amount-next {
+  position: absolute;
+  width: 11px;
+  height: 20px;
+  right: 0;
+  top: 50%;
+  margin-top: -10px;
 }
 
 .your-money-graphic-group-index-2 .graphic-item-description {
@@ -3028,11 +3074,13 @@ span.your-money-link-blue {
   -moz-transition: -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
 }
-.graphic-item-green-subgroup-today .graphic-item-subgroup-description-cell p {
+.graphic-item-green-subgroup-today .graphic-item-subgroup-description-cell .subgroup-amount-backlight,
+.graphic-item-green-subgroup-today .graphic-item-subgroup-description-cell .subgroup-description-backlight {
   color: #ffffff;
   background-color: #00BC3E;
 }
-.graphic-item-green-subgroup-gray .graphic-item-subgroup-description-cell p {
+.graphic-item-green-subgroup-gray .graphic-item-subgroup-description-cell .subgroup-amount-backlight,
+.graphic-item-green-subgroup-gray .graphic-item-subgroup-description-cell .subgroup-description-backlight {
   color: #9B9B9B;
 }
 .graphic-item-green-subgroup.last-child .graphic-item-subgroup-description-cell {
@@ -3062,6 +3110,148 @@ span.your-money-link-blue {
 }
 .your-menu-list li.your-menu-log-out {
   margin-top: 58px;
+}
+
+.screen-subgroup-spending {
+  background: #ffffff;
+  color: #000000;
+}
+
+.subgroup-spending-header {
+  position: relative;
+}
+
+.subgroup-spending-back {
+  top: 24px;
+  left: 16px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  padding: 3px 0;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+.subgroup-spending-back svg {
+  width: 10px;
+  height: 18px;
+  display: block;
+  margin: 0 auto;
+}
+
+.subgroup-spending-header-title {
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+  color: #9B9B9B;
+  padding: 26px 0 23px;
+}
+
+.subgroup-spending-infoblock {
+  text-align: center;
+  padding: 21px 20px 25px;
+  clear: both;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+}
+.subgroup-spending-infoblock a {
+  color: #000000;
+  text-decoration: underline;
+}
+.subgroup-spending-infoblock a.link-red-dark {
+  color: #B61F30;
+}
+.subgroup-spending-infoblock a.link-blue-dark {
+  color: #0068B7;
+}
+.subgroup-spending-infoblock a.link-blue {
+  color: #0091FF;
+}
+
+.subgroup-spending-list {
+  max-width: 363px;
+  padding: 0 14px;
+  margin: 0 auto;
+}
+
+.subgroup-spending-item {
+  position: relative;
+  padding-left: 100px;
+}
+
+.subgroup-spending-graphic {
+  width: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 46px;
+}
+
+.spending-item-subgroup-description {
+  position: relative;
+}
+.spending-item-subgroup-description-gray .spending-item-subgroup-description-cell {
+  color: #9B9B9B;
+}
+
+.spending-item-subgroup-description-wrap {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.spending-item-subgroup-description-cell {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  color: #00BC3E;
+  padding-bottom: 6px;
+}
+
+.spending-item-subgroup-amount {
+  float: left;
+  font-weight: 600;
+  white-space: nowrap;
+  width: 45px;
+  text-align: right;
+}
+
+.spending-amount-backlight,
+.spending-description-backlight {
+  display: inline-block;
+  padding-right: 2px;
+}
+
+.spending-amount-backlight {
+  padding-right: 5px;
+  padding-left: 2px;
+}
+
+.spending-item-subgroup-amount-description {
+  overflow: hidden;
+  position: relative;
+  padding-right: 12px;
+}
+
+.spending-description-note {
+  font-size: 10px;
+  line-height: 13px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-top: -1px;
+  letter-spacing: 0.2px;
+}
+
+.spending-item-subgroup-amount-next {
+  position: absolute;
+  width: 9px;
+  height: 16px;
+  right: 0;
+  top: 2px;
+}
+.spending-item-subgroup-amount-next svg {
+  display: block;
 }
 
 /* sidebar */
@@ -3767,6 +3957,23 @@ a.alert-button-cancel {
 
   .spending-money-subtitle {
     font-size: 14px;
+  }
+
+  .subgroup-spending-graphic {
+    width: 86px;
+  }
+
+  .spending-item-subgroup-description {
+    font-size: 14px;
+  }
+
+  .subgroup-spending-item {
+    padding-left: 86px;
+  }
+
+  .spending-description-note {
+    font-size: 9px;
+    line-height: 12px;
   }
 }
 /* retina */

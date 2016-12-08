@@ -25,6 +25,7 @@ var screenYourMoney = $('.screen-your-money');
 var elementYourMoneyHeader = $('.your-money-header');
 var elementSpendingMoneyHeader = $('.spending-money-header');
 var screenModalYourMenu = $('.screen-modal-your-menu');
+var screenSubgroupSpending = $('.screen-subgroup-spending');
 
 $(document).ready(function(){
 
@@ -1138,8 +1139,8 @@ $(document).ready(function(){
 
     $('.your-money-graphic-green').on('click', function(event) {
         event.preventDefault();
-        splitGreenAction();
         if (!greenActive) {
+            splitGreenAction();
             splitGreen($('.your-money-graphic-green'));
             splitGreenPull();
         }
@@ -1153,9 +1154,67 @@ $(document).ready(function(){
         });
     });
 
-    $('.graphic-item').on('click', function(event) {
+    $('.graphic-item-subgroup-description').on('click', function(event) {
         event.preventDefault();
-        console.log('click');
+        var thisDataScreen = $(this).data('screen');
+        if ( thisDataScreen != undefined ) {
+            elementSpendingMoneyHeader
+            .hide("slide", {
+                 direction: "left",
+                 easing: "easeInOutCirc"
+            }, 300);
+            screenYourMoney
+            .hide("slide", {
+                 direction: "left",
+                 easing: "easeInOutCirc"
+            }, 300);
+            $(thisDataScreen)
+            .addClass('subgroup-spending-active')
+            .show("slide", {
+                 direction: "right",
+                 easing: "easeInOutCirc"
+            }, 300);
+            $(thisDataScreen).find('.subgroup-spending-item').each(function(index, el) {
+                thisElement = $(this);
+                var thisElementHeight = thisElement.find('.subgroup-spending-graphic').innerHeight();
+                thisElement.find('.spending-item-subgroup-description-cell').css({
+                    height: thisElementHeight
+                });
+            });
+        }
+    });
+
+    $(window).resize(function() {
+        if ( $('.subgroup-spending-active').length ) {
+            var activeScreen = $('.subgroup-spending-active');
+            $(activeScreen).find('.subgroup-spending-item').each(function(index, el) {
+                thisElement = $(this);
+                var thisElementHeight = thisElement.find('.subgroup-spending-graphic').innerHeight();
+                thisElement.find('.spending-item-subgroup-description-cell').css({
+                    height: thisElementHeight
+                });
+            });
+        }
+    });
+
+    $('.subgroup-spending-back').on('click', function(event) {
+        event.preventDefault();
+        elementSpendingMoneyHeader
+        .show("slide", {
+             direction: "left",
+             easing: "easeInOutCirc"
+        }, 300);
+        screenYourMoney
+        .show("slide", {
+             direction: "left",
+             easing: "easeInOutCirc"
+        }, 300);
+        $(this).parents('.screen')
+        .removeClass('subgroup-spending-active')
+        .hide("slide", {
+             direction: "right",
+             easing: "easeInOutCirc"
+        }, 300);
     });
 
     $('.your-money-graphic-green-pull').on('click', function(event) {
