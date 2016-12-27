@@ -3299,6 +3299,11 @@ span.your-money-link-blue {
   width: 24px;
   height: 24px;
   padding: 4px;
+  z-index: 300;
+}
+.designate-transaction-info.active .designate-transaction-info-icon {
+  color: #292C33;
+  background-color: #ffffff;
 }
 
 .designate-transaction-info-icon {
@@ -3313,6 +3318,9 @@ span.your-money-link-blue {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  -moz-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 
 .designate-transaction-title {
@@ -3352,6 +3360,62 @@ span.your-money-link-blue {
 }
 .designate-transaction-navigation a.button {
   margin: 0 9px 17px;
+}
+
+.drop-info-block-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.75);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.drop-info-block {
+  position: absolute;
+  margin-bottom: 20px;
+  left: 20px;
+  right: 20px;
+  top: 67px;
+}
+
+.drop-info-block-corner {
+  position: absolute;
+  right: 0;
+  top: -16px;
+  overflow: hidden;
+  width: 16px;
+  height: 16px;
+}
+.drop-info-block-corner:after {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 16px solid transparent;
+  border-left-width: 8px;
+  border-right-width: 8px;
+  border-bottom-color: #ffffff;
+}
+
+.drop-info-content {
+  background: #ffffff;
+  overflow: auto;
+  max-height: calc(100%);
+  padding: 16px 20px 20px;
+  font-size: 16px;
+  line-height: 22px;
+}
+.drop-info-content p {
+  margin-bottom: 22px;
+}
+
+.drop-info-navigation {
+  text-align: center;
 }
 
 /* sidebar */

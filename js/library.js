@@ -13,14 +13,20 @@
                 'resize': true,
                 'parent': 'body',
                 'minus': 0,
-                'reduce': 1
+                'reduce': 1,
+                'max': false
             }, options);
 
             var element = this;
             var bodyHeight = $(settings.parent).innerHeight();
             var bodyWidth = $(settings.parent).innerWidth();
 
-            console.log(bodyHeight);
+            //console.log(bodyHeight);
+
+            var elHeight = 'height';
+            if ( settings.max == true ) {
+              elHeight = 'max-height';
+            }
 
             //width
             if ( settings.width == true ) {
@@ -44,7 +50,7 @@
             //height
             this.each(function() {
                 var $this = $(this);
-                $this.css('height', (bodyHeight-settings.minus)/settings.reduce);
+                $this.css(elHeight, (bodyHeight-settings.minus)/settings.reduce);
             });
 
             //resize (height)
@@ -52,9 +58,9 @@
                 $(window).bind('resize', function() {
                     element.each(function() {
                         var $this = $(this);
-                        $this.css('height', 'auto');
+                        $this.css(elHeight, 'auto');
                         bodyHeight = $(settings.parent).innerHeight();
-                        $this.css('height', (bodyHeight-settings.minus)/settings.reduce);
+                        $this.css(elHeight, (bodyHeight-settings.minus)/settings.reduce);
                     });
                 });
             }
