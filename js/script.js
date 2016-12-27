@@ -26,6 +26,7 @@ var elementYourMoneyHeader = $('.your-money-header');
 var elementSpendingMoneyHeader = $('.spending-money-header');
 var screenModalYourMenu = $('.screen-modal-your-menu');
 var screenSubgroupSpending = $('.screen-subgroup-spending');
+var screenDesignateTransaction = $('.screen-designate-transaction');
 
 $(document).ready(function(){
 
@@ -1267,6 +1268,21 @@ $(document).ready(function(){
             'transform': 'translateX(0px)'
         });
         backSubgroups.find('.graphic-item-subgroup-description').removeClass('visible');
+    });
+
+    // $('').on('click', function(event) {
+    //     screenDesignateTransaction
+    //     .show("slide", {
+    //          direction: "right",
+    //          easing: "easeInOutCirc"
+    //     }, 300);
+    // });
+    $('.hide-designate-transaction').on('click', function(event) {
+        screenDesignateTransaction
+        .hide("slide", {
+             direction: "right",
+             easing: "easeInOutCirc"
+        }, 300);
     });
 
     // $(document).on('swipeleft', function(event) {

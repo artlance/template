@@ -40,6 +40,26 @@
     &-overflow-hidden {
         overflow: hidden;
     }
+    &-white {
+        background-color: $w;
+        color: $background;
+        select.select,
+        input.input-text,
+        span.input-text {
+            border-color: $bg;
+        }
+        a.button,
+        input.button,
+        button.button {
+            background-color: $bg;
+            color: $w;
+            border-color: $bg;
+            &-ghost {
+                background-color: $w;
+                color: $bg;
+            }
+        }
+    }
 }
 .screen-your-money {
     position: relative;

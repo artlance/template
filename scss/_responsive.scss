@@ -34,6 +34,9 @@
         line-height: 30px;
     }
     .select-wrapper {
+        &-225 {
+            width: 205px;
+        }
         &-139 {
             width: 118px;
         }
@@ -190,16 +193,16 @@
     .your-money-graphic {
         width: 86px;
         &-red {
-            margin-left: -44px;
+            margin-left: -43px;
         }
         &-green {
-            margin-left: -148px;
+            margin-left: -150px;
         }
         &-blue {
-            margin-left: 60px;
+            margin-left: 64px;
         }
         &.active {
-            margin-left: -148px;
+            margin-left: -150px;
         }
     }
     .graphic-item {
@@ -398,5 +401,15 @@
     .spending-description-note {
         font-size: 9px;
         line-height: 12px;
+    }
+    //screen designate transaction ///////////////////////////////////////////
+    .designate-transaction-title {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .designate-transaction-row-title {
+        font-size: 14px;
+        line-height: 20px;
+        padding-bottom: 6px;
     }
 }

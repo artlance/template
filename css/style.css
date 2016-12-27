@@ -532,6 +532,29 @@ a.underline {
 .screen-overflow-hidden {
   overflow: hidden;
 }
+.screen-white {
+  background-color: #ffffff;
+  color: #292C33;
+}
+.screen-white select.select,
+.screen-white input.input-text,
+.screen-white textarea.textarea,
+.screen-white span.input-text {
+  border-color: #292C33;
+}
+.screen-white a.button,
+.screen-white input.button,
+.screen-white button.button {
+  background-color: #292C33;
+  color: #ffffff;
+  border-color: #292C33;
+}
+.screen-white a.button-ghost,
+.screen-white input.button-ghost,
+.screen-white button.button-ghost {
+  background-color: #ffffff;
+  color: #292C33;
+}
 
 .screen-your-money {
   position: relative;
@@ -682,6 +705,9 @@ textarea.textarea {
 .select-wrapper-inline select.select {
   padding-left: 5px !important;
   padding-right: 5px !important;
+}
+.select-wrapper-225 {
+  width: 225px;
 }
 .select-wrapper-139 {
   width: 139px;
@@ -2998,14 +3024,15 @@ span.your-money-link-blue {
   float: left;
   font-weight: 600;
   white-space: nowrap;
-  width: 45px;
+  width: 55px;
+  letter-spacing: -0.5px;
   text-align: right;
 }
 
 .graphic-item-subgroup-amount-description {
   overflow: hidden;
   position: relative;
-  padding-right: 12px;
+  padding-right: 10px;
 }
 
 .graphic-item-subgroup-amount-note {
@@ -3213,7 +3240,8 @@ span.your-money-link-blue {
   float: left;
   font-weight: 600;
   white-space: nowrap;
-  width: 45px;
+  width: 55px;
+  letter-spacing: -0.5px;
   text-align: right;
 }
 
@@ -3252,6 +3280,78 @@ span.your-money-link-blue {
 }
 .spending-item-subgroup-amount-next svg {
   display: block;
+}
+
+.hide-designate-transaction {
+  padding-top: 2px;
+}
+.hide-designate-transaction svg {
+  width: 10px;
+  height: 18px;
+  display: block;
+  margin: 0 auto;
+}
+
+.designate-transaction-info {
+  position: absolute;
+  right: 16px;
+  top: 24px;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
+
+.designate-transaction-info-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #292C33;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.designate-transaction-title {
+  display: block;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 25px 0 24px;
+  text-align: center;
+}
+
+.designate-transaction-form {
+  padding: 52px 0 0;
+  text-align: center;
+  margin-left: -4px;
+  margin-right: -4px;
+}
+.designate-transaction-form input.input-text, .designate-transaction-form textarea.textarea,
+.designate-transaction-form .select-wrapper,
+.designate-transaction-form span.input-text {
+  margin: 0 4px;
+}
+
+.designate-transaction-row {
+  margin-bottom: 10px;
+}
+
+.designate-transaction-row-title {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.designate-transaction-navigation {
+  padding-top: 75px;
+  margin-left: -9px;
+  margin-right: -9px;
+  padding-bottom: 3px;
+}
+.designate-transaction-navigation a.button {
+  margin: 0 9px 17px;
 }
 
 /* sidebar */
@@ -3607,6 +3707,9 @@ a.alert-button-cancel {
     line-height: 30px;
   }
 
+  .select-wrapper-225 {
+    width: 205px;
+  }
   .select-wrapper-139 {
     width: 118px;
   }
@@ -3777,16 +3880,16 @@ a.alert-button-cancel {
     width: 86px;
   }
   .your-money-graphic-red {
-    margin-left: -44px;
+    margin-left: -43px;
   }
   .your-money-graphic-green {
-    margin-left: -148px;
+    margin-left: -150px;
   }
   .your-money-graphic-blue {
-    margin-left: 60px;
+    margin-left: 64px;
   }
   .your-money-graphic.active {
-    margin-left: -148px;
+    margin-left: -150px;
   }
 
   .graphic-item {
@@ -3974,6 +4077,17 @@ a.alert-button-cancel {
   .spending-description-note {
     font-size: 9px;
     line-height: 12px;
+  }
+
+  .designate-transaction-title {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .designate-transaction-row-title {
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 6px;
   }
 }
 /* retina */

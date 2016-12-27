@@ -1685,13 +1685,14 @@ span.your-money-link {
     float: left;
     font-weight: 600;
     white-space: nowrap;
-    width: 45px;
+    width: 55px;
+    letter-spacing: -0.5px;
     text-align: right;
 }
 .graphic-item-subgroup-amount-description {
     overflow: hidden;
     position: relative;
-    padding-right: 12px;
+    padding-right: 10px;
 }
 .graphic-item-subgroup-amount-note {
     font-size: 10px;
@@ -1897,7 +1898,8 @@ span.your-money-link {
     float: left;
     font-weight: 600;
     white-space: nowrap;
-    width: 45px;
+    width: 55px;
+    letter-spacing: -0.5px;
     text-align: right;
 }
 .spending-amount-backlight,
@@ -1930,5 +1932,68 @@ span.your-money-link {
     top: 2px;
     svg {
         display: block;
+    }
+}
+//screen designate transaction ///////////////////////////////////////////
+.hide-designate-transaction {
+    padding-top: 2px;
+    svg {
+        width: 10px;
+        height: 18px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+.designate-transaction-info {
+    position: absolute;
+    right: 16px;
+    top: 24px;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+}
+.designate-transaction-info-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    color: $w;
+    text-align: center;
+    background-color: $bg;
+    @include border-radius(50%);
+}
+.designate-transaction-title {
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 25px 0 24px;
+    text-align: center;
+}
+.designate-transaction-form {
+    padding: 52px 0 0;
+    text-align: center;
+    margin-left: -4px;
+    margin-right: -4px;
+    input.input-text,
+    .select-wrapper,
+    span.input-text {
+        margin: 0 4px;
+    }
+}
+.designate-transaction-row {
+    margin-bottom: 10px;
+}
+.designate-transaction-row-title {
+    display: block;
+    margin-bottom: 8px;
+}
+.designate-transaction-navigation {
+    padding-top: 75px;
+    margin-left: -9px;
+    margin-right: -9px;
+    padding-bottom: 3px;
+    a.button {
+        margin: 0 9px 17px;
     }
 }
