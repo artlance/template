@@ -1637,7 +1637,8 @@ span.your-money-link {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 340px;
+    width: calc(100vw - 30px) !important;
+    max-width: 335px !important;
     z-index: 2;
     @include transform(translate3d(110%, 0, 0));
     @include transition(transform 0.3s $f, opacity 0.3s $f);

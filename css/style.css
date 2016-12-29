@@ -2960,7 +2960,8 @@ span.your-money-link-blue {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 340px;
+  width: calc(100vw - 30px) !important;
+  max-width: 335px !important;
   z-index: 2;
   -webkit-transform: translate3d(110%, 0, 0);
   -moz-transform: translate3d(110%, 0, 0);
@@ -3947,13 +3948,14 @@ a.alert-button-cancel {
     margin-left: -43px;
   }
   .your-money-graphic-green {
-    margin-left: -150px;
+    margin-left: -145px;
   }
   .your-money-graphic-blue {
-    margin-left: 64px;
+    margin-left: 59px;
   }
   .your-money-graphic.active {
-    margin-left: -150px;
+    left: 0;
+    margin-left: 15px;
   }
 
   .graphic-item {
@@ -4072,10 +4074,10 @@ a.alert-button-cancel {
     margin-left: -44px;
   }
   .your-money-column-green {
-    margin-left: -148px;
+    margin-left: -145px;
   }
   .your-money-column-blue {
-    margin-left: 60px;
+    margin-left: 59px;
   }
 
   .your-money-link-title {

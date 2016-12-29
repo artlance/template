@@ -929,7 +929,7 @@ $(document).ready(function(){
         });
     }
     var splitGreen = function(thisFuncElement) {
-        var graphicDescriptionWidth = $('body').innerWidth() - 25;
+        var graphicDescriptionWidth = $('body').innerWidth() - 30;
         if ( graphicDescriptionWidth > 335 ) {
             graphicDescriptionWidth = 335;
         }
