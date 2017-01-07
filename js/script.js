@@ -846,11 +846,11 @@ $(document).ready(function(){
             $(this).find('.your-money-graphic-group').each(function(index, el) {
                 if (index >= 1) {
                     $(this).css({
-                        bottom: $(this).prev('.your-money-graphic-group').innerHeight() - 51 + 12
+                        bottom: $(this).prev('.your-money-graphic-group').innerHeight() - 51 + 47
                     });
                 } else if (index == 0) {
                     $(this).css({
-                        bottom: 12
+                        bottom: 47
                     });
                 }
                 var thisLength = $(this).find('.graphic-item').length - 1;
@@ -907,7 +907,7 @@ $(document).ready(function(){
         });
         //$('.screen-your-money').removeClass('screen-overflow-hidden');
 
-        $('.screen-inside-drag').swipe("disable");
+        //$('.screen-inside-drag').swipe("disable");
 
         $('.your-money-menu').addClass('your-money-menu-hide');
         elementYourMoneyHeader
@@ -1041,6 +1041,7 @@ $(document).ready(function(){
 
     $('.your-money-graphic-blue-group-index-0, .your-money-graphic-blue-group-index-1, .your-money-graphic-blue-group-index-2').on('click', function(event) {
         event.preventDefault();
+        screenYourMoney.addClass('has-active-graphic');
         $('.your-money-menu').addClass('your-money-menu-hide');
         $('.your-money-back').addClass('active');
         screenYourMoney.css({
@@ -1067,6 +1068,7 @@ $(document).ready(function(){
 
     $('.your-money-graphic-red-group-index-0, .your-money-graphic-red-group-index-1, .your-money-graphic-red-group-index-2').on('click', function(event) {
         event.preventDefault();
+        screenYourMoney.addClass('has-active-graphic');
         $('.your-money-menu').addClass('your-money-menu-hide');
         $('.your-money-back').addClass('active');
         screenYourMoney.css({
@@ -1093,7 +1095,8 @@ $(document).ready(function(){
 
     $('.your-money-back').on('click', function(event) {
         event.preventDefault();
-        $('.screen-inside-drag').swipe("enable");
+        screenYourMoney.removeClass('has-active-graphic');
+        //$('.screen-inside-drag').swipe("enable");
         $('.your-money-menu').removeClass('your-money-menu-hide');
         $('.your-money-back').removeClass('active');
         $('.your-money-graphic-green, .your-money-column-green').removeAttr('style');
@@ -1141,6 +1144,7 @@ $(document).ready(function(){
     $('.your-money-graphic-green').on('click', function(event) {
         event.preventDefault();
         if (!greenActive) {
+            screenYourMoney.addClass('has-active-graphic');
             splitGreenAction();
             splitGreen($('.your-money-graphic-green'));
             splitGreenPull();
@@ -1226,13 +1230,14 @@ $(document).ready(function(){
 
     $('.spending-money-back').on('click', function(event) {
         event.preventDefault();
+        screenYourMoney.removeClass('has-active-graphic');
         $('.your-money-graphic-green-pull').hide();
         $('.your-money-graphic-green').css({
             'transform': 'translateY(0px)'
         });
         $('.your-money-graphic-green').removeClass('active');
         $('.spending-money-back').removeClass('active');
-        $('.screen-inside-drag').swipe("enable");
+        //$('.screen-inside-drag').swipe("enable");
         $('.your-money-menu').removeClass('your-money-menu-hide');
 
         $('.your-money-infoblock')
@@ -1490,36 +1495,36 @@ $(window).load(function() {
         });
     });
 
-    $('.screen-inside-drag').swipe( {
-        swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData, currentDirection) {
-            //console.log(phase);
-            var directionResult = false;
-            if (direction == 'down') {
-                screenYourMoney.css({
-                    top: distance-yourMoneyInfoblock
-                });
-                directionResult = 'drDown';
-            } else if (direction == 'up') {
-                screenYourMoney.css({
-                    top: -distance
-                });
-                directionResult = 'drUp';
-            }
-            if (phase == 'end') {
-                //console.log('END');
-                var directionResultTop = 0;
-                if (directionResult == 'drUp') {
-                    directionResultTop = -yourMoneyInfoblock;
-                } else if (directionResult == 'drDown') {
-                    directionResultTop = 0;
-                }
-                screenYourMoney.css({
-                    top: directionResultTop
-                });
-            }
-        },
-        threshold: 1
-    });
+    // $('.screen-inside-drag').swipe( {
+    //     swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData, currentDirection) {
+    //         //console.log(phase);
+    //         var directionResult = false;
+    //         if (direction == 'down') {
+    //             screenYourMoney.css({
+    //                 top: distance-yourMoneyInfoblock
+    //             });
+    //             directionResult = 'drDown';
+    //         } else if (direction == 'up') {
+    //             screenYourMoney.css({
+    //                 top: -distance
+    //             });
+    //             directionResult = 'drUp';
+    //         }
+    //         if (phase == 'end') {
+    //             //console.log('END');
+    //             var directionResultTop = 0;
+    //             if (directionResult == 'drUp') {
+    //                 directionResultTop = -yourMoneyInfoblock;
+    //             } else if (directionResult == 'drDown') {
+    //                 directionResultTop = 0;
+    //             }
+    //             screenYourMoney.css({
+    //                 top: directionResultTop
+    //             });
+    //         }
+    //     },
+    //     threshold: 1
+    // });
 
 
 });//window load

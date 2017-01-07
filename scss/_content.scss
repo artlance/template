@@ -1531,12 +1531,31 @@ span.your-money-link {
     position: relative;
 }
 .your-money-infoblock {
-    padding: 0 20px 15px;
-    background: $w;
+    padding: 0 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+    @include transform(translate3d(0, 0, 0));
+    @include transition(transform .15s $f);
+}
+.has-active-graphic {
+    .your-money-infoblock {
+        @include transform(translate3d(0, 101%, 0));
+    }
 }
 .your-money-infoblock-text {
-    border-top: 2px solid $black;
-    padding-top: 15px;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+.your-money-infoblock-text-cell {
+    display: table-cell;
+    vertical-align: middle;
+    height: 49px;
+    font-size: 12px;
+    line-height: 1.2;
 }
 .your-money-graphic-group {
     position: absolute;
@@ -1563,7 +1582,7 @@ span.your-money-link {
     }
     .graphic-item {
         position: absolute;
-        bottom: 12px;
+        bottom: 47px;
         left: 0;
         width: 100%;
         z-index: 1 !important;
