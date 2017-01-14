@@ -1486,45 +1486,112 @@ $(window).load(function() {
 
     //------------------------------------------------------------------------//
 
-    var yourMoneyInfoblock = $('.your-money-infoblock').innerHeight();
+    // var yourMoneyInfoblock = $('.your-money-infoblock').innerHeight();
+
+    // $(window).resize(function() {
+    //     yourMoneyInfoblock = $('.your-money-infoblock').innerHeight();
+    //     screenYourMoney.css({
+    //         top: 0
+    //     });
+    // });
+
+    var resultDistanceDiff = 0;
+    var maxSwipeFunction = function() {
+        var maxSwipeHeight = 0;
+
+        $('.your-money-graphic').each(function(index, el) {
+            var newHeight = 0;
+            $(this).find('.your-money-graphic-group').each(function(index, el) {
+                newHeight += parseInt($(this).css('height'));
+            });
+            if ( maxSwipeHeight <= newHeight ) {
+                maxSwipeHeight = newHeight;
+            }
+        });
+
+        maxSwipeHeight = maxSwipeHeight + $('.your-money-header').innerHeight();
+
+        $('.your-money-content-full-graph').css({height: maxSwipeHeight});
+
+        var maxSwipeHeightDiff = maxSwipeHeight - $('body').innerHeight();
+        if (maxSwipeHeightDiff < 0) {
+            resultDistanceDiff = 0;
+        } else {
+            resultDistanceDiff = maxSwipeHeightDiff;
+        }
+    }
+
+    maxSwipeFunction();
 
     $(window).resize(function() {
-        yourMoneyInfoblock = $('.your-money-infoblock').innerHeight();
-        screenYourMoney.css({
-            top: 0
-        });
+        maxSwipeFunction();
     });
 
-    // $('.screen-inside-drag').swipe( {
-    //     swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData, currentDirection) {
-    //         //console.log(phase);
-    //         var directionResult = false;
-    //         if (direction == 'down') {
-    //             screenYourMoney.css({
-    //                 top: distance-yourMoneyInfoblock
-    //             });
-    //             directionResult = 'drDown';
-    //         } else if (direction == 'up') {
-    //             screenYourMoney.css({
-    //                 top: -distance
-    //             });
-    //             directionResult = 'drUp';
-    //         }
-    //         if (phase == 'end') {
-    //             //console.log('END');
-    //             var directionResultTop = 0;
-    //             if (directionResult == 'drUp') {
-    //                 directionResultTop = -yourMoneyInfoblock;
-    //             } else if (directionResult == 'drDown') {
-    //                 directionResultTop = 0;
-    //             }
-    //             screenYourMoney.css({
-    //                 top: directionResultTop
-    //             });
-    //         }
-    //     },
-    //     threshold: 1
-    // });
+
+
+    //var currentDistance = 0;
+
+    $('.your-money-content').swipe( {
+        swipeStatus:function(event, phase, direction, distance, duration, fingers, fingerData, currentDirection) {
+            //console.log(phase);
+            var directionResult = false;
+            if (direction == 'down') {
+                //resultDistance = currentDistance + distance;
+                $('.your-money-content').css({
+                    'transform': 'translateY('+resultDistanceDiff+'px)'
+                });
+                // if ( resultDistance > 0 && resultDistance < resultDistanceDiff ) {
+                //     $('.your-money-content').css({
+                //         'transform': 'translateY('+resultDistance+'px)'
+                //     });
+                // } else if ( resultDistance > resultDistanceDiff ) {
+                //     $('.your-money-content').css({
+                //         'transform': 'translateY('+resultDistanceDiff+'px)'
+                //     });
+                //     resultDistance = resultDistanceDiff;
+                // } else {
+                //     $('.your-money-content').css({
+                //         'transform': 'translateY(0px)'
+                //     });
+                //     resultDistance = 0;
+                // }
+                // directionResult = 'drDown';
+                // console.log(direction);
+            } else if (direction == 'up') {
+                $('.your-money-content').css({
+                    'transform': 'translateY(0px)'
+                });
+                // resultDistance = currentDistance - distance;
+                // if ( resultDistance < 0 ) {
+                //     $('.your-money-content').css({
+                //         'transform': 'translateY(0px)'
+                //     });
+                //     resultDistance = 0;
+                // } else {
+                //     $('.your-money-content').css({
+                //         'transform': 'translateY('+resultDistance+'px)'
+                //     });
+                // }
+                // directionResult = 'drUp';
+                // console.log(direction);
+            }
+            if (phase == 'end') {
+                //currentDistance = resultDistance;
+                //console.log('END');
+                // var directionResultTop = 0;
+                // if (directionResult == 'drUp') {
+                //     directionResultTop = -yourMoneyInfoblock;
+                // } else if (directionResult == 'drDown') {
+                //     directionResultTop = 0;
+                // }
+                // screenYourMoney.css({
+                //     top: directionResultTop
+                // });
+                // console.log(currentDistance);
+            }
+        },
+        threshold: 5
+    });
 
 
 });//window load

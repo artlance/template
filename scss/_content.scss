@@ -1522,6 +1522,7 @@ span.your-money-link {
 .screen-your-money {
     color: $black;
     text-align: center;
+    background: $w;
     a {
         color: $black;
     }
@@ -1529,6 +1530,14 @@ span.your-money-link {
 .your-money-content {
     background: $w;
     position: relative;
+    @include transition(transform .3s $f);
+}
+.your-money-content-full-graph {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
 }
 .your-money-infoblock {
     padding: 0 20px;
@@ -1543,6 +1552,9 @@ span.your-money-link {
 .has-active-graphic {
     .your-money-infoblock {
         @include transform(translate3d(0, 101%, 0));
+    }
+    .your-money-content {
+        @include transform(translateY(0) !important);
     }
 }
 .your-money-infoblock-text {

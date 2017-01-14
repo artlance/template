@@ -507,6 +507,10 @@ a.underline {
   display: block !important;
 }
 
+.show-on-small {
+  display: none;
+}
+
 .screen {
   position: absolute;
   top: 0;
@@ -2827,6 +2831,7 @@ span.your-money-link-blue {
 .screen-your-money {
   color: #000000;
   text-align: center;
+  background: #ffffff;
 }
 .screen-your-money a {
   color: #000000;
@@ -2835,6 +2840,17 @@ span.your-money-link-blue {
 .your-money-content {
   background: #ffffff;
   position: relative;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+
+.your-money-content-full-graph {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100px;
 }
 
 .your-money-infoblock {
@@ -2860,6 +2876,13 @@ span.your-money-link-blue {
   -ms-transform: translate3d(0, 101%, 0);
   -o-transform: translate3d(0, 101%, 0);
   transform: translate3d(0, 101%, 0);
+}
+.has-active-graphic .your-money-content {
+  -webkit-transform: translateY(0) !important;
+  -moz-transform: translateY(0) !important;
+  -ms-transform: translateY(0) !important;
+  -o-transform: translateY(0) !important;
+  transform: translateY(0) !important;
 }
 
 .your-money-infoblock-text {
@@ -3758,6 +3781,10 @@ a.alert-button-cancel {
 /* home */
 /* responsive */
 @media screen and (max-width: 374px) {
+  .show-on-small {
+    display: inline-block !important;
+  }
+
   span.input-text,
   input.input-text,
   textarea.textarea,
