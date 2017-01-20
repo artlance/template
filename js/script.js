@@ -27,6 +27,8 @@ var elementSpendingMoneyHeader = $('.spending-money-header');
 var screenModalYourMenu = $('.screen-modal-your-menu');
 var screenSubgroupSpending = $('.screen-subgroup-spending');
 var screenDesignateTransaction = $('.screen-designate-transaction');
+var screenCardCharges = $('.screen-card-charges');
+var screenMonthlyBills = $('.screen-monthly-bills');
 
 $(document).ready(function(){
 
@@ -1066,8 +1068,51 @@ $(document).ready(function(){
         $('.your-money-graphic-blue .graphic-item-description').addClass('visible');
     });
 
+    var subgroupItemCellHeight = function(thisParent) {
+        $(thisParent).find('.subgroup-spending-item').each(function(index, el) {
+            thisElement = $(this);
+            var thisElementHeight = thisElement.find('.subgroup-spending-graphic').innerHeight();
+            thisElement.find('.spending-item-subgroup-description-cell').css({
+                height: thisElementHeight
+            });
+            //console.log(thisElementHeight);
+        });
+    }
+
     $('.your-money-graphic-red-group-index-0, .your-money-graphic-red-group-index-1, .your-money-graphic-red-group-index-2').on('click', function(event) {
         event.preventDefault();
+        if (screenYourMoney.hasClass('has-active-graphic')) {
+            var thisGraphicTarget = $(this).data('target');
+            if (thisGraphicTarget) {
+                var thisGraphicTargetHeader = "." + thisGraphicTarget + "-header";
+                var thisGraphicTargetScreen = ".screen-" + thisGraphicTarget;
+                $(thisGraphicTargetScreen).addClass('is-active-graphic');
+                $(thisGraphicTargetHeader)
+                .show("slide", {
+                     direction: "right",
+                     easing: "easeInOutCirc"
+                }, 300);
+                $(thisGraphicTargetScreen)
+                .show("slide", {
+                     direction: "right",
+                     easing: "easeInOutCirc"
+                }, 300);
+                screenYourMoney
+                .hide("slide", {
+                     direction: "left",
+                     easing: "easeInOutCirc"
+                }, 300);
+                elementYourMoneyHeader
+                .hide("slide", {
+                     direction: "left",
+                     easing: "easeInOutCirc"
+                }, 300);
+                subgroupItemCellHeight(thisGraphicTargetScreen);
+                var offsetCardCharges = $(thisGraphicTargetScreen).find('.subgroup-spending-separate').eq(0).offset().top - 112;
+                //console.log(offsetCardCharges);
+                $(thisGraphicTargetScreen).scrollTop(offsetCardCharges);
+            }
+        }
         screenYourMoney.addClass('has-active-graphic');
         $('.your-money-menu').addClass('your-money-menu-hide');
         $('.your-money-back').addClass('active');
@@ -1092,6 +1137,65 @@ $(document).ready(function(){
         $('.your-money-graphic-red, .your-money-column-red').addClass('active');
         $('.your-money-graphic-red .graphic-item-description').addClass('visible');
     });
+
+    $('.credit-card-fund-back').on('click', function(event) {
+        event.preventDefault();
+        $('.card-charges-header')
+        .hide("slide", {
+             direction: "right",
+             easing: "easeInOutCirc"
+        }, 300);
+        screenCardCharges.removeClass('is-active-graphic');
+        screenCardCharges
+        .hide("slide", {
+             direction: "right",
+             easing: "easeInOutCirc"
+        }, 300);
+        screenYourMoney
+        .show("slide", {
+             direction: "left",
+             easing: "easeInOutCirc"
+        }, 300);
+        elementYourMoneyHeader
+        .show("slide", {
+             direction: "left",
+             easing: "easeInOutCirc"
+        }, 300);
+    });
+
+    $('.monthly-bills-back').on('click', function(event) {
+        event.preventDefault();
+        $('.monthly-bills-header')
+        .hide("slide", {
+             direction: "right",
+             easing: "easeInOutCirc"
+        }, 300);
+        screenMonthlyBills.removeClass('is-active-graphic');
+        screenMonthlyBills
+        .hide("slide", {
+             direction: "right",
+             easing: "easeInOutCirc"
+        }, 300);
+        screenYourMoney
+        .show("slide", {
+             direction: "left",
+             easing: "easeInOutCirc"
+        }, 300);
+        elementYourMoneyHeader
+        .show("slide", {
+             direction: "left",
+             easing: "easeInOutCirc"
+        }, 300);
+    });
+
+    $(window).resize(function() {
+        if ($('.is-active-graphic').length) {
+            var isActive = '.is-active-graphic';
+            subgroupItemCellHeight(isActive);
+        }
+    });
+
+    //------------------------------------------------------------------------//
 
     $('.your-money-back').on('click', function(event) {
         event.preventDefault();

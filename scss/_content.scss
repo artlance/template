@@ -1518,6 +1518,76 @@ span.your-money-link {
     position: relative;
     background: $tr;
 }
+//element credit card fund header ///////////////////////////////////////////
+.credit-card-fund-header {
+    text-align: center;
+    color: $w;
+    z-index: 500;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 4px;
+    position: absolute;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    background-color: #B61F30;
+}
+.monthly-bills-header {
+    @extend .credit-card-fund-header;
+    background-color: #EC283E;
+}
+.credit-card-fund-title {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 26px 0 16px;
+}
+.credit-card-fund-back,
+.monthly-bills-back {
+    top: 24px;
+    left: 16px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    padding: 3px 0;
+    svg {
+        width: 10px;
+        height: 18px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+.credit-card-fund-info {
+    position: absolute;
+    right: 16px;
+    top: 24px;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+}
+.credit-card-fund-info-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    color: $b;
+    text-align: center;
+    background-color: $w;
+    @include border-radius(50%);
+}
+.credit-card-fund-subtitle {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    height: 43px;
+    letter-spacing: 0.2px;
+    padding: 0 20px;
+}
+.credit-card-fund-subtitle-amount {
+    white-space: nowrap;
+    font-weight: 600;
+}
 //screen your money ///////////////////////////////////////////
 .screen-your-money {
     color: $black;
@@ -1912,6 +1982,16 @@ span.your-money-link {
             color: #9B9B9B;
         }
     }
+    &-darkred {
+        .spending-item-subgroup-description-cell {
+            color: #B61F30;
+        }
+    }
+    &-red {
+        .spending-item-subgroup-description-cell {
+            color: #EC283E;
+        }
+    }
 }
 .spending-item-subgroup-description-wrap {
     display: table;
@@ -1938,6 +2018,7 @@ span.your-money-link {
 .spending-description-backlight {
     display: inline-block;
     padding-right: 2px;
+    white-space: nowrap;
 }
 .spending-amount-backlight {
     padding-right: 5px;
@@ -2088,5 +2169,48 @@ span.your-money-link {
 }
 .drop-info-navigation {
     text-align: center;
+}
+//screen card charges ///////////////////////////////////////////
+.screen-card-charges,
+.screen-monthly-bills {
+    .wrap {
+        padding-top: 112px;
+    }
+    .subgroup-spending-list {
+        padding-top: 17px;
+        padding-bottom: 17px;
+    }
+}
+.subgroup-spending-separate {
+    clear: both;
+    text-align: right;
+    font-size: 10px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #9B9B9B;
+    padding-top: 13px;
+    margin: 0 6px 22px;
+}
+.subgroup-spending-separate-prev {
+    margin-bottom: 1px;
+}
+.subgroup-spending-separate-line {
+    height: 2px;
+    font-size: 0;
+    line-height: 0;
+    background: #D9D9D9;
+    margin-bottom: 3px;
+    &-darkred {
+        background-color: #B61F30;
+    }
+    &-red {
+        background-color: #EC283E;
+    }
+}
+.subgroup-spending-separate-darkred {
+    color: #B61F30;
+}
+.subgroup-spending-separate-red {
+    color: #EC283E;
 }
 
