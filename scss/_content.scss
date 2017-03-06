@@ -1135,12 +1135,15 @@ a.bills-edit-delete {
     }
 }
 .saving-info {
+    //background: #f00;
     text-align: center;
     color: $blue;
     font-size: 16px;
     line-height: 30px;
-    padding: 0 10px 10px;
-    letter-spacing: 0.2px;
+    padding: 0 5px 10px;
+    margin-left: -20px;
+    margin-right: -20px;
+    //letter-spacing: 0.2px;
     .select-wrapper {
         color: $blue;
         position: relative;

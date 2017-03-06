@@ -2368,8 +2368,9 @@ a.bills-edit-delete-confirm:after {
   color: #0091FF;
   font-size: 16px;
   line-height: 30px;
-  padding: 0 10px 10px;
-  letter-spacing: 0.2px;
+  padding: 0 5px 10px;
+  margin-left: -20px;
+  margin-right: -20px;
 }
 .saving-info .select-wrapper {
   color: #0091FF;
@@ -4240,11 +4241,9 @@ a.alert-button-cancel {
   }
 
   .saving-info {
-    padding-left: 0;
-    padding-right: 0;
     font-size: 14px;
     line-height: 28px;
-    letter-spacing: 0;
+    letter-spacing: -0.3px;
   }
 
   .spending-info {
