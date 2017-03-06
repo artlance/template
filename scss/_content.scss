@@ -864,7 +864,9 @@ a.button-analyzing-ready-back {
     color: $red;
     font-size: 16px;
     line-height: 22px;
-    padding: 7px 10px 15px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 7px 5px 15px;
     letter-spacing: 0.2px;
 }
 .bills-line {
