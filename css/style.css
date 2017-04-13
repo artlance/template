@@ -3088,6 +3088,48 @@ span.your-money-link-blue {
   display: table-cell;
   vertical-align: middle;
   padding: 0 0 20px 0;
+  font-size: 15px;
+}
+
+.graphic-item-description-table-wrapper {
+  max-width: 100%;
+  color: #000000;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+.graphic-item-description-table {
+  width: 100%;
+}
+.graphic-item-description-table td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.gidt-col-1 {
+  width: 60%;
+  text-align: right;
+}
+
+.gidt-col-2 {
+  max-width: 110px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.gidt-col-2 .gidt-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.gidt-col-3 {
+  width: 40%;
+  text-align: right;
+}
+
+.gidt-item {
+  white-space: nowrap;
 }
 
 .graphic-item-subgroup-description {
@@ -4339,6 +4381,16 @@ a.alert-button-cancel {
 
   .graphic-item-subgroup-description-cell {
     padding-left: 100px;
+  }
+
+  .gidt-col-2 {
+    padding-right: 0;
+    max-width: 70px;
+  }
+
+  .graphic-item-description-cell {
+    font-size: 13px;
+    letter-spacing: -0.2px;
   }
 
   .spending-money-subtitle,
