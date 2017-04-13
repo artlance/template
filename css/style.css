@@ -3393,6 +3393,19 @@ span.your-money-link-blue {
   white-space: nowrap;
 }
 
+.spending-description-backlight {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.spending-item-subgroup-description-cell-bg-gray .spending-amount-backlight,
+.spending-item-subgroup-description-cell-bg-gray .spending-description-backlight {
+  color: #ffffff;
+  background: #C1C1C1;
+}
+
 .spending-amount-backlight {
   padding-right: 5px;
   padding-left: 2px;
@@ -3885,6 +3898,10 @@ span.your-money-link-blue {
   border-radius: 13px 13px 0 0;
 }
 
+.alert-title-note {
+  padding-top: 10px;
+}
+
 .alert-button-wrapper {
   margin-bottom: 6px;
 }
@@ -3895,6 +3912,7 @@ a.alert-button {
   padding: 17px 10px;
   display: block;
   text-align: center;
+  color: #0079ff;
   background-color: rgba(255, 255, 255, 0.9);
   -webkit-border-radius: 13px;
   -moz-border-radius: 13px;
@@ -3904,6 +3922,15 @@ a.alert-button-nortop {
   -webkit-border-radius: 0 0 13px 13px;
   -moz-border-radius: 0 0 13px 13px;
   border-radius: 0 0 13px 13px;
+}
+a.alert-button-nortop-nobottom {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #b7b1b2;
+}
+a.alert-button-highlighted {
+  background-color: white;
 }
 
 a.alert-button-delete {
@@ -4319,12 +4346,18 @@ a.alert-button-cancel {
     font-size: 14px;
   }
 
+  .subgroup-spending-header-title {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
   .subgroup-spending-graphic {
     width: 86px;
   }
 
   .spending-item-subgroup-description {
     font-size: 14px;
+    line-height: 19px;
   }
 
   .subgroup-spending-item {
@@ -4334,6 +4367,15 @@ a.alert-button-cancel {
   .spending-description-note {
     font-size: 9px;
     line-height: 12px;
+  }
+
+  .subgroup-spending-back {
+    top: 24px;
+    padding: 4px 0;
+  }
+  .subgroup-spending-back svg {
+    width: 9px;
+    height: 15px;
   }
 
   .designate-transaction-title {

@@ -392,11 +392,16 @@
         font-size: 14px;
     }
     //screen subgroup spending ///////////////////////////////////////////
+    .subgroup-spending-header-title {
+        font-size: 14px;
+        line-height: 19px;
+    }
     .subgroup-spending-graphic {
         width: 86px;
     }
     .spending-item-subgroup-description {
         font-size: 14px;
+        line-height: 19px;
     }
     .subgroup-spending-item {
         padding-left: 86px;
@@ -404,6 +409,14 @@
     .spending-description-note {
         font-size: 9px;
         line-height: 12px;
+    }
+    .subgroup-spending-back {
+        top: 24px;
+        padding: 4px 0;
+        svg {
+            width: 9px;
+            height: 15px;
+        }
     }
     //screen designate transaction ///////////////////////////////////////////
     .designate-transaction-title {

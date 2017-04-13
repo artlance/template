@@ -2025,6 +2025,19 @@ span.your-money-link {
     padding-right: 2px;
     white-space: nowrap;
 }
+.spending-description-backlight {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+.spending-item-subgroup-description-cell-bg-gray {
+    .spending-amount-backlight,
+    .spending-description-backlight {
+        color: $w;
+        background: #C1C1C1;
+    }
+}
 .spending-amount-backlight {
     padding-right: 5px;
     padding-left: 2px;

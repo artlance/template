@@ -246,6 +246,9 @@
     background-color: rgba(255, 255, 255, 0.9);
     @include border-radius(13px 13px 0 0);
 }
+.alert-title-note {
+    padding-top: 10px;
+}
 .alert-button-wrapper {
     margin-bottom: 6px;
 }
@@ -255,10 +258,18 @@ a.alert-button {
     padding: 17px 10px;
     display: block;
     text-align: center;
+    color: #0079ff;
     background-color: rgba(255, 255, 255, 0.9);
     @include border-radius(13px);
     &-nortop {
         @include border-radius(0 0 13px 13px);
+    }
+    &-nortop-nobottom {
+        @include border-radius(0);
+        border-bottom: 1px solid #b7b1b2;
+    }
+    &-highlighted {
+        background-color: rgba(255, 255, 255, 1);
     }
 }
 a.alert-button-delete {
@@ -267,3 +278,4 @@ a.alert-button-delete {
 a.alert-button-cancel {
     color: #0079ff;
 }
+
