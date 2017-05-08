@@ -368,6 +368,40 @@
     .your-plan-graphic {
         width: 86px;
     }
+    .t3-graphic {
+        width: 86px;
+        bottom: 51px;
+    }
+    .t3-graphic-red {
+        &.active {
+            left: 0;
+            margin-left: 15px;
+        }
+    }
+    .t3-graphic-blue {
+        &.active {
+            left: 0;
+            margin-left: 15px;
+        }
+    }
+    .t3-graphic-red {
+        margin-left: -44px;
+    }
+    .t3-graphic-blue {
+        margin-left: 59px;
+    }
+    .t3-graphic-separator {
+        width: calc(100vw - 30px);
+    }
+    .t3-graphic-item-description,
+    .t3-graphic-group-description {
+        left: 90px;
+        width: calc(100vw - 120px);
+    }
+    .t3-graphic-item-description-cell,
+    .t3-graphic-group-description-cell {
+        font-size: 14px;
+    }
     .your-plan-graphic-cell {
         height: 190px;
     }

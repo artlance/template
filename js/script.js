@@ -847,15 +847,20 @@ $(document).ready(function(){
         $('.your-money-graphic').each(function(index, el) {
             $(this).find('.your-money-graphic-group').each(function(index, el) {
                 if (index >= 1) {
+                    var prevTotalElements = $(this).prev('.your-money-graphic-group').find('.graphic-item').length;
+                    var prevHiddenElements = $(this).prev('.your-money-graphic-group').find('.graphic-item-hidden').length;
+                    var prevVisibleElements = prevTotalElements - prevHiddenElements -1;
                     $(this).css({
-                        bottom: $(this).prev('.your-money-graphic-group').innerHeight() - 51 + 47
+                        //left: 10,
+                        bottom: $(this).prev('.your-money-graphic-group').innerHeight() - 51 + 47 - prevVisibleElements*yourMoneyGraphicElementsOffset
                     });
+
                 } else if (index == 0) {
                     $(this).css({
                         bottom: 47
                     });
                 }
-                var thisLength = $(this).find('.graphic-item').length - 1;
+                var thisLength = $(this).find('.graphic-item').length - $(this).find('.graphic-item-hidden').length - 1;
                 $(this).css({
                    height: thisLength*yourMoneyGraphicElementsOffset + 51
                 });
@@ -865,6 +870,8 @@ $(document).ready(function(){
                     });
                 });
             });
+
+            //green
             var subgroupLength = $(this).find('.graphic-item-green-subgroup').length;
             var subgroupTotalElements = 0;
             var hiddenElementsOffset = 0;
@@ -891,6 +898,40 @@ $(document).ready(function(){
                     height: thisLength*yourMoneyGraphicElementsOffset + 51 + 37
                 });
             });
+
+            //others begin
+            var otherGroupLength = $(this).find('.graphic-item-group').length;
+            //console.log("otherGroupLength: "+otherGroupLength);
+            var otherGroupTotalElements = 0;
+            //console.log("otherGroupTotalElements: "+otherGroupTotalElements);
+            var otherHiddenElementsOffset = 0;
+            //console.log("otherHiddenElementsOffset: "+otherHiddenElementsOffset);
+            $(this).find('.graphic-item-group').each(function(index, el) {
+                var thisLength = $(this).find('.graphic-item').length;
+                otherHiddenElementsOffset += $(this).find('.graphic-item-hidden').length*yourMoneyGraphicElementsOffset;
+                //console.log('otherHiddenElementsOffset:'+ otherHiddenElementsOffset);
+                $(this).css({
+                   bottom: otherGroupTotalElements,
+                   'margin-bottom': -otherHiddenElementsOffset
+                });
+                otherGroupTotalElements += $(this).find('.graphic-item').length*yourMoneyGraphicElementsOffset;
+                var thisLength = $(this).find('.graphic-item').length - 1;
+                $(this).find('.graphic-item').each(function(index, el) {
+                    $(this).css({
+                        bottom: yourMoneyGraphicElementsOffset*index
+                    });
+                });
+                //
+                $(this).css({
+                    height: thisLength*yourMoneyGraphicElementsOffset + 51 + 37
+                });
+                //$(this).addClass('subgroup-active');
+                $(this).find('.graphic-item-subgroup-description-cell').css({
+                    height: thisLength*yourMoneyGraphicElementsOffset + 51 + 37
+                });
+            });
+            //others end
+
         });
     }
 
@@ -923,10 +964,10 @@ $(document).ready(function(){
              easing: "easeInOutCirc"
         }, 300);
         var graphicOffset =  $('body').innerWidth()+10;
-        $('.your-money-graphic-red').css({
+        $('.your-money-graphic-red, .t3-graphic-red').css({
             'transform': 'translateX('+graphicOffset+'px)'
         });
-        $('.your-money-graphic-blue').css({
+        $('.your-money-graphic-blue, .t3-graphic-blue').css({
             'transform': 'translateX('+graphicOffset+'px)'
         });
     }
@@ -1140,52 +1181,103 @@ $(document).ready(function(){
 
     $('.credit-card-fund-back').on('click', function(event) {
         event.preventDefault();
+
+        $('.t3-graphic-scroll').hide(1, function() {
+            $('.t3-graphic-pull').css('height', 0);
+            $('.t3-graphic-scroll').scrollTop(0);
+            $('.t3-graphic').css({
+                'transform': 'translateY(0px)'
+            });
+        });
+
         $('.card-charges-header')
         .hide("slide", {
              direction: "right",
              easing: "easeInOutCirc"
         }, 300);
-        screenCardCharges.removeClass('is-active-graphic');
-        screenCardCharges
-        .hide("slide", {
-             direction: "right",
-             easing: "easeInOutCirc"
-        }, 300);
-        screenYourMoney
-        .show("slide", {
-             direction: "left",
-             easing: "easeInOutCirc"
-        }, 300);
+        var dataPrevState = $('.t3-graphic-click-area.splited').parents('.t3-graphic-wrap-group').data('t3_move_state');
+        $('.t3-graphic-click-area.splited').parents('.t3-graphic-wrap-group').css({
+            'transform': 'translateY('+dataPrevState+'px)'
+        });
+        $('.t3-graphic-click-area').removeClass('splited');
+        // screenCardCharges.removeClass('is-active-graphic');
+        // screenCardCharges
+        // .hide("slide", {
+        //      direction: "right",
+        //      easing: "easeInOutCirc"
+        // }, 300);
+        // screenYourMoney
+        // .show("slide", {
+        //      direction: "left",
+        //      easing: "easeInOutCirc"
+        // }, 300);
         elementYourMoneyHeader
         .show("slide", {
              direction: "left",
              easing: "easeInOutCirc"
-        }, 300);
+        }, 300, function() {
+            $('.t3-graphic-wrap-group').removeClass('t3-graphic-wrap-group-splited');
+            $('.t3-graphic-wrap-group').removeClass('t3-graphic-wrap-group-splited-fake');
+            $('.t3-graphic').removeClass('.fake-active');
+        });
+        $('.t3-graphic-wrap-group').fadeIn(300);
+        $('.t3-graphic-wrap-group').removeClass('t3-graphic-wrap-group-splited');
+        $('.t3-graphic-group').css({
+            'transform': 'translateY('+0+'px)'
+        });
     });
 
     $('.monthly-bills-back').on('click', function(event) {
         event.preventDefault();
+
+        //
+
+        $('.t3-graphic-scroll').hide(1, function() {
+            $('.t3-graphic-pull').css('height', 0);
+            $('.t3-graphic-scroll').scrollTop(0);
+            $('.t3-graphic').css({
+                'transform': 'translateY(0px)'
+            });
+
+        });
+
+
         $('.monthly-bills-header')
         .hide("slide", {
              direction: "right",
              easing: "easeInOutCirc"
         }, 300);
-        screenMonthlyBills.removeClass('is-active-graphic');
-        screenMonthlyBills
-        .hide("slide", {
-             direction: "right",
-             easing: "easeInOutCirc"
-        }, 300);
-        screenYourMoney
-        .show("slide", {
-             direction: "left",
-             easing: "easeInOutCirc"
-        }, 300);
+        var dataPrevState = $('.t3-graphic-click-area.splited').parents('.t3-graphic-wrap-group').data('t3_move_state');
+        $('.t3-graphic-click-area.splited').parents('.t3-graphic-wrap-group').css({
+            'transform': 'translateY('+dataPrevState+'px)'
+        });
+        $('.t3-graphic-click-area').removeClass('splited');
+        // screenMonthlyBills.removeClass('is-active-graphic');
+        // screenMonthlyBills
+        // .hide("slide", {
+        //      direction: "right",
+        //      easing: "easeInOutCirc"
+        // }, 300);
+        // screenYourMoney
+        // .show("slide", {
+        //      direction: "left",
+        //      easing: "easeInOutCirc"
+        // }, 300);
+        $('.t3-graphic-wrap-group').addClass('t3-graphic-wrap-group-splited-fake');
         elementYourMoneyHeader
         .show("slide", {
              direction: "left",
              easing: "easeInOutCirc"
-        }, 300);
+        }, 300, function() {
+            $('.t3-graphic-wrap-group').removeClass('t3-graphic-wrap-group-splited');
+            $('.t3-graphic-wrap-group').removeClass('t3-graphic-wrap-group-splited-fake');
+            $('.t3-graphic').removeClass('.fake-active');
+        });
+        $('.t3-graphic-wrap-group').fadeIn(300);
+        $('.t3-graphic-group').css({
+            'transform': 'translateY('+0+'px)'
+        });
+
     });
 
     $(window).resize(function() {
@@ -1207,14 +1299,37 @@ $(document).ready(function(){
         $('.your-money-graphic-red, .your-money-column-red').removeAttr('style');
         $('.your-money-graphic-blue, .your-money-column-blue').removeAttr('style');
 
-        $('.your-money-graphic-blue, .your-money-column-blue').removeClass('active');
+        $('.t3-graphic-blue, .t3-graphic-red').css({
+            'left': '',
+            'margin-left': ''
+        });
+
+        $('.t3-graphic-wrap-group').data('t3_move_state', 0);
+
+        $('.t3-graphic-click-area').addClass('fake-active');
+
+        $('.your-money-infoblock')
+        .show("slide", {
+             direction: "down",
+             easing: "easeInOutCirc"
+        }, 300, function() {
+            $('.t3-graphic-click-area').removeClass('active');
+            $('.t3-graphic-click-area').removeClass('fake-active');
+        });
+
+        $('.your-money-graphic-blue, .your-money-column-blue, .t3-graphic-blue').removeClass('active');
         $('.your-money-graphic-blue .graphic-item-description').removeClass('visible');
 
-        $('.your-money-graphic-red, .your-money-column-red').removeClass('active');
+        $('.your-money-graphic-red, .your-money-column-red, .t3-graphic-red').removeClass('active');
         $('.your-money-graphic-red .graphic-item-description').removeClass('visible');
 
         $('.your-money-graphic-green, .your-money-column-green').removeClass('active');
         $('.your-money-graphic-green .graphic-item-description').removeClass('visible');
+
+
+        $('.t3-graphic-wrap-group').css({
+            'transform': 'translateY('+0+'px)'
+        });
 
         $('.your-money-graphic-group').each(function(index, el) {
             $(this).css({
@@ -1370,10 +1485,10 @@ $(document).ready(function(){
             'transform': 'translateY(0px)'
         });
         backSubgroups.find('.graphic-item-hidden').removeClass('graphic-item-shown');
-        $('.your-money-graphic-red').css({
+        $('.your-money-graphic-red, .t3-graphic-red').css({
             'transform': 'translateX(0px)'
         });
-        $('.your-money-graphic-blue').css({
+        $('.your-money-graphic-blue, .t3-graphic-blue').css({
             'transform': 'translateX(0px)'
         });
         backSubgroups.find('.graphic-item-subgroup-description').removeClass('visible');
