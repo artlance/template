@@ -278,4 +278,28 @@ a.alert-button-delete {
 a.alert-button-cancel {
     color: #0079ff;
 }
+.dialog-content-buttons-block {
+    display: block;
+    .dialog-btn {
+        display: block;
+        width: 100%;
+        &:after {
+            width: 100%;
+            border: 0 !important;
+            height: 1px;
+            background: #b7b1b2;
+            opacity: 0.5;
+            @include transform(scale(1));
+        }
+        &:first-child {
+            border-bottom-left-radius: 0;
+            &:after {
+                display: none;
+            }
+        }
+        &:last-child {
+            border-bottom-left-radius: 12px;
+        }
+    }
+}
 

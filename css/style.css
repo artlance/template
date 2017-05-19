@@ -4335,6 +4335,35 @@ a.alert-button-cancel {
   color: #0079ff;
 }
 
+.dialog-content-buttons-block {
+  display: block;
+}
+.dialog-content-buttons-block .dialog-btn {
+  display: block;
+  width: 100%;
+}
+.dialog-content-buttons-block .dialog-btn:after {
+  width: 100%;
+  border: 0 !important;
+  height: 1px;
+  background: #b7b1b2;
+  opacity: 0.5;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.dialog-content-buttons-block .dialog-btn:first-child {
+  border-bottom-left-radius: 0;
+}
+.dialog-content-buttons-block .dialog-btn:first-child:after {
+  display: none;
+}
+.dialog-content-buttons-block .dialog-btn:last-child {
+  border-bottom-left-radius: 12px;
+}
+
 /* home */
 /* responsive */
 @media screen and (max-width: 374px) {

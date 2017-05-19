@@ -319,10 +319,12 @@
                     contentBd = $('<div class="dialog-content-bd">'+ settings.contentHtml +'</div>')
                 );
                 content.append(
-                    contentFt = $('<div class="dialog-content-ft"></div>')
+                    contentFt = $('<div class="dialog-content-ft dialog-content-buttons-block"></div>')
                 );
                 contentFt.append(
-                    okBtn = $('<button class="dialog-btn dialog-btn-ok '+ settings.buttonClass.ok +'" >'+ settings.buttonText.ok +'</button>')
+                    cancelBtn = $('<button class="dialog-btn dialog-btn-cancel '+ settings.buttonClass.cancel +'" >'+ settings.buttonText.cancel +'</button>'),
+                    okBtn = $('<button class="dialog-btn dialog-btn-ok '+ settings.buttonClass.ok +'" >'+ settings.buttonText.ok +'</button>'),
+                    delBtn = $('<button class="dialog-btn dialog-btn-delete '+ settings.buttonClass.delete +'" >'+ settings.buttonText.delete +'</button>')
                 );
                 break;
 

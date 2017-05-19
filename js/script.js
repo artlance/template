@@ -1665,18 +1665,19 @@ $(document).ready(function(){
 
     //------------------------------------------------------------------------//
 
-    // $('body').on('click', function(event) {
-    //     event.preventDefault();
-    //     $.dialog({
-    //         type : 'confirm',
-    //         buttonText : {
-    //             ok : 'Spend it',
-    //             cancel : 'Save it'
-    //         },
-    //         titleText : 'You just got $30 from Venmo',
-    //         contentHtml : '<p>Would you like to spend it or save it?</p>'
-    //     });
-    // });
+    $('body').on('click', function(event) {
+        event.preventDefault();
+        $.dialog({
+            type : 'alert',
+            buttonText : {
+                ok : 'Spend it',
+                cancel : 'Save it',
+                delete : 'Delete'
+            },
+            titleText : 'You just got $30 from Venmo',
+            contentHtml : '<p>Would you like to spend it or save it?</p>'
+        });
+    });
 
 });//document ready
 
