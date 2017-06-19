@@ -2610,6 +2610,15 @@ span.your-money-link-blue {
   -moz-transition: -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
 }
+.your-money-back:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: -16px;
+  right: -24px;
+  bottom: -24px;
+  background: transparent;
+}
 .your-money-back svg {
   width: 10px;
   height: 18px;
@@ -2635,6 +2644,15 @@ span.your-money-link-blue {
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
   -moz-transition: -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
+}
+.your-money-menu:after {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: -16px;
+  right: -24px;
+  bottom: -24px;
+  background: transparent;
 }
 .your-money-menu.your-money-menu-hide {
   -webkit-transform: translate3d(-100px, 0, 0);
@@ -2761,6 +2779,15 @@ span.your-money-link-blue {
   -moz-transition: -moz-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
 }
+.spending-money-back:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: -16px;
+  right: -24px;
+  bottom: -24px;
+  background: transparent;
+}
 .spending-money-back svg {
   width: 10px;
   height: 18px;
@@ -2878,6 +2905,16 @@ span.your-money-link-blue {
   height: 18px;
   display: block;
   margin: 0 auto;
+}
+.credit-card-fund-back:before,
+.monthly-bills-back:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: -16px;
+  right: -24px;
+  bottom: -24px;
+  background: transparent;
 }
 
 .credit-card-fund-info {
@@ -3355,6 +3392,15 @@ span.your-money-link-blue {
   height: 18px;
   display: block;
   margin: 0 auto;
+}
+.subgroup-spending-back:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: -16px;
+  right: -24px;
+  bottom: -24px;
+  background: transparent;
 }
 
 .subgroup-spending-header-title {

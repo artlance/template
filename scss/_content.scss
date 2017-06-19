@@ -1360,6 +1360,16 @@ span.your-money-link {
     padding: 3px 0;
     @include transform(translate3d(-100px, 0, 0));
     @include transition(transform 0.3s $f);
+    &:before {
+        //opacity: 0.5;
+        content: "";
+        position: absolute;
+        top: -24px;
+        left: -16px;
+        right: -24px;
+        bottom: -24px;
+        background: $tr;
+    }
     svg {
         width: 10px;
         height: 18px;
@@ -1379,6 +1389,16 @@ span.your-money-link {
     padding: 11px 4px;
     z-index: 550;
     @include transition(transform 0.3s $f);
+    &:after {
+        //opacity: 0.5;
+        content: "";
+        position: absolute;
+        top: -24px;
+        left: -16px;
+        right: -24px;
+        bottom: -24px;
+        background: $tr;
+    }
     &.your-money-menu-hide {
         @include transform(translate3d(-100px, 0, 0));
     }
@@ -1468,6 +1488,16 @@ span.your-money-link {
     padding: 3px 0;
     @include transform(translate3d(-100px, 0, 0));
     @include transition(transform 0.3s $f);
+    &:before {
+        //opacity: 0.5;
+        content: "";
+        position: absolute;
+        top: -24px;
+        left: -16px;
+        right: -24px;
+        bottom: -24px;
+        background: $tr;
+    }
     svg {
         width: 10px;
         height: 18px;
@@ -1571,6 +1601,16 @@ span.your-money-link {
         height: 18px;
         display: block;
         margin: 0 auto;
+    }
+    &:before {
+        //opacity: 0.5;
+        content: "";
+        position: absolute;
+        top: -24px;
+        left: -16px;
+        right: -24px;
+        bottom: -24px;
+        background: $tr;
     }
 }
 .credit-card-fund-info {
@@ -1990,6 +2030,16 @@ span.your-money-link {
         height: 18px;
         display: block;
         margin: 0 auto;
+    }
+    &:before {
+        //opacity: 0.5;
+        content: "";
+        position: absolute;
+        top: -24px;
+        left: -16px;
+        right: -24px;
+        bottom: -24px;
+        background: $tr;
     }
 }
 .subgroup-spending-header-title {
