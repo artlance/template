@@ -2971,6 +2971,10 @@ span.your-money-link-blue {
   transition: transform 0.3s ease-in-out;
 }
 
+.t3-graphic-has-splited .your-money-content {
+  transform: translateY(0px) !important;
+}
+
 .your-money-content-full-graph {
   position: absolute;
   left: 0;
