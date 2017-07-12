@@ -1,4 +1,5 @@
 //screens
+var screenLanding = $('.screen-landing');
 var screenSignIn = $('.screen-signin');
 var screenSignUp = $('.screen-signup');
 var screenLinkBank = $('.screen-link-bank');
@@ -49,6 +50,49 @@ $(document).ready(function(){
 
     //------------------------------------------------------------------------//
 
+    //slider
+    $('.landing-slider').slick({
+        dots: true,
+        arrows: true,
+        draggable: true,
+        infinite: false,
+        centerMode: false,
+        centerPadding: '0px',
+        autoplay: false,
+        autoplaySpeed: 5000,
+        speed: 500,
+        pauseOnHover: false,
+        pauseOnDotsHover: false,
+        slide: '.landing-slide',
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        asNavFor: '.landing-description-slider',
+        prevArrow: '<button type="button" class="slick-prev"><span class="svg"><img src="upload/left-white.svg" alt=""></span></button>',
+        nextArrow: '<button type="button" class="slick-next"><span class="svg"><img src="upload/left-white.svg" alt=""></span></button>',
+        //fade: true
+    });
+
+    $('.landing-description-slider').slick({
+        dots: false,
+        arrows: false,
+        draggable: false,
+        infinite: false,
+        centerMode: false,
+        centerPadding: '0px',
+        autoplay: false,
+        autoplaySpeed: 5000,
+        speed: 500,
+        pauseOnHover: false,
+        pauseOnDotsHover: false,
+        slide: '.landing-description-slide',
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        asNavFor: '.landing-slider',
+        fade: true
+    });
+
+    //------------------------------------------------------------------------//
+
     $(document).on('mobileinit', function () {
         $.mobile.ignoreContentEnabled = true;
     });
@@ -93,6 +137,35 @@ $(document).ready(function(){
 
     //------------------------------------------------------------------------//
 
+    $('.landing-go-signup').click(function(){
+         screenLanding
+         .hide("slide", {
+             direction: "left",
+             easing: "easeInOutCirc"
+         }, 300);
+         screenSignUp
+         .show("slide", {
+             direction: "right",
+             easing: "easeInOutCirc"
+         }, 300);
+         elementBreadcrumbsSignUp
+         .show("slide", {
+             direction: "up",
+             easing: "easeInOutCirc"
+         }, 300);
+    });
+    $('.landing-go-login').click(function(){
+         screenLanding
+         .hide("slide", {
+             direction: "left",
+             easing: "easeInOutCirc"
+         }, 300);
+         screenSignIn
+         .show("slide", {
+             direction: "right",
+             easing: "easeInOutCirc"
+         }, 300);
+    });
     $('.go-signup').click(function(){
          screenSignIn
          .hide("slide", {

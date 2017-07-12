@@ -158,6 +158,64 @@
         }
     }
 }
+// screen landing ///////////////////////////////////////////
+.landing-slider-wrapper {
+    max-width: 335px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+.landing-slider {
+    margin-bottom: 60px;
+    display: none;
+    &.slick-initialized {
+        display: block;
+    }
+}
+.landing-description-slider {
+    display: none;
+    &.slick-initialized {
+        display: block;
+    }
+}
+.landing-slide {
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+.landing-description-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+}
+.landing-description-slide-text {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+}
+.landing-navigation {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-left: -10px;
+    margin-right: -10px;
+    a.button,
+    input.button,
+    button.button {
+        width: 120px;
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+}
+.landing-description-slide-content {
+    min-height: 112px;
+    padding-bottom: 2px;
+    max-width: 335px;
+    margin: 0 auto;
+}
 // screen signin ///////////////////////////////////////////
 .screen-signin {
 }
