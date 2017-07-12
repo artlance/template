@@ -53,7 +53,7 @@ $(document).ready(function(){
     //slider
     $('.landing-slider').slick({
         dots: true,
-        arrows: true,
+        arrows: false,
         draggable: true,
         infinite: false,
         centerMode: false,
